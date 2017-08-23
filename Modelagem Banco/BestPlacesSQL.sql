@@ -1,0 +1,114 @@
+﻿CREATE TABLE usuario(
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(100),
+	senha VARCHAR(100) NOT NULL,
+	sexo VARCHAR(10) NOT NULL,
+	profissao VARCHAR(100) NOT NULL,
+	nascimento DATE NOT NULL,
+	fotoPerfil VARCHAR(100) NOT NULL,
+	cidade VARCHAR(100) NOT NULL,
+	PRIMARY KEY(email)
+);
+CREATE TABLE lugar(
+	id SERIAL,
+	nome VARCHAR(100) NOT NULL,
+	descricao VARCHAR(100) NOT NULL,
+	estado VARCHAR(100) NOT NULL,
+	cidade VARCHAR(100) NOT NULL,
+	rua VARCHAR(100) NOT NULL,
+	tipo VARCHAR(100) NOT NULL,
+	responsavel VARCHAR(100) NOT NULL,
+	FOREIGN KEY (responsavel) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE evento(
+	id SERIAL,
+	nome VARCHAR(100) NOT NULL,
+	descricao VARCHAR(100) NOT NULL,
+	lugar VARCHAR(100) NOT NULL,
+	data DATE NOT NULL,
+	hora TIME NOT NULL,
+	responsavel VARCHAR(100) NOT NULL,
+	FOREIGN KEY (responsavel) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE avaliaLugar(
+	emailUsuario VARCHAR(100),
+	idLugar INT,
+	nota INT NOT NULL,
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idLugar) REFERENCES lugar(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario, idLugar)
+);
+CREATE TABLE presencaLugar(
+	emailUsuario VARCHAR(100),
+	idLugar INT,
+	data DATE NOT NULL,
+	status VARCHAR(50) NOT NULL,
+	comentario VARCHAR(100),
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idLugar) REFERENCES lugar(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario, idLugar)
+);
+CREATE TABLE fotosPresencaLugar(
+	foto VARCHAR(100),
+	emailUsuario VARCHAR(100),
+	idLugar INT,
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idLugar) REFERENCES lugar(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario, idLugar, foto)
+);
+CREATE TABLE presencaEvento(
+	emailUsuario VARCHAR(100),
+	idEvento INT,
+	data DATE NOT NULL,
+	status VARCHAR(50) NOT NULL,
+	comentario VARCHAR(100),
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idEvento) REFERENCES evento(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario, idEvento)
+);
+CREATE TABLE fotosPresencaEvento(
+	foto VARCHAR(100),
+	emailUsuario VARCHAR(100),
+	idEvento INT,
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idEvento) REFERENCES evento(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario, idEvento, foto)
+);
+CREATE TABLE recomendacao(
+	id SERIAL,
+	usuariodestino VARCHAR(100) NOT NULL,
+	usuarioorigem VARCHAR(100) NOT NULL,
+	idLugar INT NOT NULL,
+	FOREIGN KEY (idLugar) REFERENCES lugar(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (usuariodestino) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (usuarioorigem) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE interacao(
+	id SERIAL,
+	usuario1 VARCHAR(100) NOT NULL,
+	usuario2 VARCHAR(100) NOT NULL,
+	amizade BOOLEAN,
+	mensagem VARCHAR(100),
+	FOREIGN KEY (usuario1) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (usuario2) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE solicitacao(
+	id SERIAL,
+	usuario VARCHAR(100) NOT NULL,
+	usuarioSolicitante VARCHAR(100) NOT NULL,
+	resposta BOOLEAN,
+	FOREIGN KEY (usuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (usuarioSolicitante) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE divulgaEvento(
+	emailUsuario VARCHAR(100),
+	idEvento INT,
+	FOREIGN KEY (emailUsuario) REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idEvento) REFERENCES evento(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(emailUsuario,idEvento)
+)

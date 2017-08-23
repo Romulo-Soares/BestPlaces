@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Cadastro
-    Created on : 16/08/2017, 21:34:47
-    Author     : Jozimar & Rômulo
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,6 +11,17 @@
     </head>
     <body>
         
+        <div class="pos-f-t">
+             
+             <nav class="navbar navbar-inverse bg-inverse">
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+             BestPlaces
+             </button>
+             </nav>
+      
+         </div>
+        
           <div class="container" id="divCad">
             
             <div class="row" id="divCadTit">
@@ -23,45 +29,45 @@
                     <h1>Cadastro</h1>
                 </div>
             </div>
-              
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nome" aria-describedby="basic-addon1">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Cidade" aria-describedby="basic-addon1">
-            </div>
-            
-            <div class="form-group">
-                <input type="date" data-toggle="tooltip" title="Informe sua data de nascimento" class="form-control" placeholder="Nascimento" aria-describedby="basic-addon1">
-            </div>
-              
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
-            </div>
-            
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
-            </div>
-              
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Profissão" aria-describedby="basic-addon1">
-            </div>
-                
-            <div class="form-group">
-                <select class="form-control" data-toggle="tooltip" title="Informe seu sexo">
-		       <option readonly>Masculino</option>
-		       <option>Feminino</option>
-		       <option>Outro</option>
-	        </select>
-            </div>  
-             
-            <input data-toggle="tooltip" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1">
-            
-            <div class="btn-group-justified" id="divBtLogin">
-                <button type="button" name="button" class="btn btn-danger btn-xs btn-block">Cadastrar</button>
-            </div>
+                <form action="controllerCadastro" method="post">
+                    <div class="form-group">
+                        <input type="text" name="nome" class="form-control" placeholder="Nome" aria-describedby="basic-addon1">
+                    </div>
 
+                    <div class="form-group">
+                        <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" name="nascimento" data-toggle="tooltip" title="Informe sua data de nascimento" class="form-control" placeholder="Nascimento" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="profissao" class="form-control" placeholder="Profissão" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="sexo" data-toggle="tooltip" title="Informe seu sexo">
+                               <option readonly>Masculino</option>
+                               <option>Feminino</option>
+                               <option>Outro</option>
+                        </select>
+                    </div>  
+
+                    <input data-toggle="tooltip" name="foto" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1">
+
+                    <div class="btn-group-justified" id="divBtLogin">
+                        <input type="submit" name="cadastrar" class="btn btn-danger btn-xs btn-block" role="button" value="Cadastrar">
+                    </div>
+                </form>
           </div>
         
           <script src="bootstrap-4.0.0-alpha.6-dist\js\jquery-3.2.1.min.js"></script>

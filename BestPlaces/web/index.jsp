@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Login
-    Created on : 16/08/2017, 21:24:22
-    Author     : Jozimar & Rômulo
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +10,16 @@
         <title>Login</title>
     </head>
     <body>
+        <div class="pos-f-t">
+             
+             <nav class="navbar navbar-inverse bg-inverse">
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+             BestPlaces
+             </button>
+             </nav>
+      
+         </div>
         
           <div class="container" id="divLog">
 
@@ -33,7 +38,10 @@
             </div>
             
             <div class="btn-group-justified" id="divBtLogin">
-                <button type="button" name="button" class="btn btn-danger btn-xs btn-block">Login</button>
+                <button type="button" name="login" class="btn btn-danger btn-xs btn-block" role="button">Login</button>
+            </div>
+            <div class="btn-group-justified" id="divBtLogin">
+                <a name="cadastrar" href="cadastro.jsp" class="btn btn-danger btn-xs btn-block" role="button">Cadastrar</a>
             </div>
 
           </div>
