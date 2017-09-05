@@ -10,36 +10,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-         <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist\css\main.css">
-         <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css">
+         <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\main.css">
+         <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
         <title>Página Inicial</title>
     </head>
     <body>
         
-         <div class="pos-f-t">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" id="linkMenu" data-toggle="collapse" href="#navbarToggle"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a id="linkMenu" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              </ul>
+            </div>
+        </nav>
              
-             <nav class="navbar navbar-inverse bg-inverse">
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-             BestPlaces
-             </button>
-             </nav>
-             
-             <div class="collapse" id="navbarToggleExternalContent">
+             <div class="collapse" id="navbarToggle">
                  <div class="bg-inverse col-md-12 text-center">
-                     <h4 class="text-white">Nome do Usuário</h4>
+                     <h4>Nome do Usuário</h4>
                      <img id="fotoPerfil" src="Imagens\logo2.png" alt="">
-                     <div id="divLogout">
-                      <a name="amigos" href="" class="btn btn-danger btn-xs btn-block" role="button">Amigos</a>
-                      <a name="eventos" href="" class="btn btn-danger btn-xs btn-block" role="button">Eventos</a>
-                      <a name="locais" href="" class="btn btn-danger btn-xs btn-block" role="button">Locais</a>
-                      <a name="mensagens" href="" class="btn btn-danger btn-xs btn-block" role="button">Mensagens</a>
-                      <a name="logout" href="" class="btn btn-danger btn-xs btn-block" role="button">Logout</a>
+                     <div id="divMenu">
+                      <a name="amigos" href="" class="btn btn-danger btn-md btn-block" role="button">Amigos</a>
+                      <a name="eventos" href="" class="btn btn-danger btn-md btn-block" role="button">Eventos</a>
+                      <a name="locais" href="" class="btn btn-danger btn-md btn-block" role="button">Locais</a>
+                      <a name="mensagens" href="" class="btn btn-danger btn-md btn-block" role="button">Mensagens</a>
                      </div>
                  </div>
              </div>
-         </div>
-          <script src="bootstrap-4.0.0-alpha.6-dist\js\jquery-3.2.1.min.js"></script>
-          <script src="bootstrap-4.0.0-alpha.6-dist\js\bootstrap.min.js"></script>
+  
+          <script src="bootstrap-3.3.7-dist\js\jquery-3.2.1.min.js"></script>
+          <script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
     </body>
 </html>

@@ -5,21 +5,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist\css\main.css">
-        <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\main.css">
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
         <title>Login</title>
     </head>
     <body>
-        <div class="pos-f-t">
              
-             <nav class="navbar navbar-inverse bg-inverse">
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-             BestPlaces
-             </button>
-             </nav>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" id="linkMenu"><span class="glyphicon glyphicon-log-in"></span> BestPlaces</a>
+              </div>
+            </div>
+        </nav>
       
-         </div>
         
           <div class="container" id="divLog">
 
@@ -28,26 +27,27 @@
                      <img src="Imagens\logo.png" class="img-responsive" alt="Logo">
                  </div>
             </div>
-              
+            
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1"> 
             </div>
               
             <div class="form-group"> 
                 <input type="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
             </div>
             
-            <div class="btn-group-justified" id="divBtLogin">
-                <button type="button" name="login" class="btn btn-danger btn-xs btn-block" role="button">Login</button>
+            <div class="form-group" id="divBtLogin">
+                <button name="login" class="btn btn-danger btn-md btn-block" role="button">Login</button>
             </div>
-            <div class="btn-group-justified" id="divBtLogin">
-                <a name="cadastrar" href="cadastro.jsp" class="btn btn-danger btn-xs btn-block" role="button">Cadastrar</a>
+             
+            <div class="form-group" id="divBtLogin">
+                <a name="cadastrar" href="cadastro.jsp" class="btn btn-danger btn-md btn-block" role="button">Cadastrar</a>
             </div>
 
           </div>
     
-          <script src="bootstrap-4.0.0-alpha.6-dist\js\jquery-3.2.1.min.js"></script>
-          <script src="bootstrap-4.0.0-alpha.6-dist\js\bootstrap.min.js"></script>
+          <script src="bootstrap-3.3.7-dist\js\jquery-3.2.1.min.js"></script>
+          <script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
     
     </body>
 </html>
