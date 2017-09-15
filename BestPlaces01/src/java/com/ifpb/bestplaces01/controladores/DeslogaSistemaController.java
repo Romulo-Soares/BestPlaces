@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 public class DeslogaSistemaController implements ICommand{
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws SQLException, ClassNotFoundException, IOException, ServletException {
+    public void execute(HttpServletRequest req, HttpServletResponse res) 
+            throws SQLException, ClassNotFoundException, IOException, ServletException {
         
         HttpSession session = req.getSession();
         session.invalidate();

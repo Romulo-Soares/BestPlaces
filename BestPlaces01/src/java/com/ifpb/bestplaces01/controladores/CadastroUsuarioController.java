@@ -9,8 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ifpb.bestplaces01.interfaces.ICommand;
+import com.ifpb.bestplaces01.interfaces.IUploadFile;
+import javax.servlet.http.Part;
 
-public class CadastroUsuarioController implements ICommand{
+public class CadastroUsuarioController implements ICommand, IUploadFile{
     
     @Override
     public final void execute(HttpServletRequest req, HttpServletResponse res) 
@@ -23,20 +25,21 @@ public class CadastroUsuarioController implements ICommand{
        String profissao = req.getParameter("profissao");
        String nascimento = req.getParameter("nascimento");
        String senha = req.getParameter("senha");
-       String foto = req.getParameter("fotoPerfil");
+       
+       Part part = req.getPart("fotoPerfil");
+       String pathName = "\\"+ req.getServletContext().getRealPath("fotosPerfil");   
        
        Usuario u = new Usuario();
        u.setNome(nome);
        u.setEmail(email);
        u.setCidade(cidade);
-       u.setFotoPerfil(foto);
+       u.setFotoPerfil(uploadFile(pathName, part));
        u.setProfissao(profissao);
        u.setSenha(senha);
        u.setSexo(sexo);
        u.setNascimento(nascimento);
        
        UsuarioDAO userDAO = new UsuarioDAO();
-       
        if(userDAO.insert(u)){
            res.sendRedirect("index.jsp");
        }

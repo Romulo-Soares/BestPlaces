@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 public class ExcluiContaController implements ICommand{
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws SQLException, ClassNotFoundException, IOException, ServletException {
+    public void execute(HttpServletRequest req, HttpServletResponse res) 
+            throws SQLException, ClassNotFoundException, IOException, ServletException {
         
         HttpSession session = req.getSession();
         UsuarioDAO userDAO = new UsuarioDAO();

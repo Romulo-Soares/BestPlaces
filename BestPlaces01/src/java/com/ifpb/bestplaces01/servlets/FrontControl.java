@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class FrontControl extends HttpServlet {
+@MultipartConfig
+public class FrontControl extends HttpServlet implements ICommand{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -33,4 +35,10 @@ public class FrontControl extends HttpServlet {
         }       
          
     } 
+
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) 
+            throws SQLException, ClassNotFoundException, IOException, ServletException {
+    }
+    
 }

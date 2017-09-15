@@ -24,8 +24,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            
+        if (rs.next()) { 
             Usuario usuario = new Usuario();
             usuario.setNome(rs.getString("nome"));
             usuario.setNascimento(rs.getString("nascimento"));
@@ -40,7 +39,6 @@ public class UsuarioDAO implements IUsuarioDAO{
             return usuario;
             
         } else {
-            
             con.close();
             return null;
         }
@@ -59,7 +57,6 @@ public class UsuarioDAO implements IUsuarioDAO{
         List<Usuario> usuarios = new ArrayList<>();
 
         while (rs.next()) {
-
             Usuario usuario = new Usuario();
             usuario.setNome(rs.getString("nome"));
             usuario.setNascimento(rs.getString("nascimento"));
@@ -120,12 +117,12 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean update(Usuario u) throws SQLException, ClassNotFoundException {
+    public boolean update(String email, Usuario u) throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
                 "UPDATE usuario SET (nome, nascimento, sexo, senha, cidade, "
-                        + "profissao, foto_Perfil) = (?,?,?,?,?,?,?) "
+                        + "profissao, foto_Perfil, email) = (?,?,?,?,?,?,?,?) "
                         + "WHERE email = ?");
 
         stmt.setString(1, u.getNome());
@@ -136,6 +133,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         stmt.setString(6, u.getProfissao());
         stmt.setString(7, u.getFotoPerfil());
         stmt.setString(8, u.getEmail());
+        stmt.setString(9, email);
 
         boolean retorno = stmt.executeUpdate() > 0;
         

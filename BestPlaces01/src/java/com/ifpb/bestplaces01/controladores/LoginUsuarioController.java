@@ -10,8 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ifpb.bestplaces01.interfaces.ICommand;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
 public class LoginUsuarioController implements ICommand, IAutenticavelUsuario{
@@ -32,7 +30,6 @@ public class LoginUsuarioController implements ICommand, IAutenticavelUsuario{
              HttpSession session = req.getSession();
              session.setAttribute("email", email);
              session.setAttribute("senha", senha);
-
              session.setAttribute("nome", u.getNome());
              session.setAttribute("foto", u.getFotoPerfil());
              session.setAttribute("cidade", u.getCidade());
@@ -45,24 +42,6 @@ public class LoginUsuarioController implements ICommand, IAutenticavelUsuario{
         }else{
              res.sendRedirect("index.jsp");
         }
-        
-    }
-
-    @Override
-    public boolean autenticarUsuario(String email, String senha) {
-        UsuarioDAO userDAO = new UsuarioDAO();
-        
-        try {
-            Usuario u = userDAO.read(email);
-            
-            if(u != null)
-                return u.getEmail().equals(email) && u.getSenha().equals(senha);
-            else return false;
-            
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(LoginUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
         
     }
     

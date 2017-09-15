@@ -11,6 +11,6 @@ public interface IUsuarioDAO {
     public List<Usuario> list() throws SQLException, ClassNotFoundException;
     public boolean insert(Usuario u) throws SQLException, ClassNotFoundException;
     public boolean delete(String email) throws SQLException, ClassNotFoundException;
-    public boolean update(Usuario u) throws SQLException, ClassNotFoundException;
+    public boolean update(String email, Usuario u) throws SQLException, ClassNotFoundException;
     
 }
