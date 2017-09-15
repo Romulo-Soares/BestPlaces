@@ -6,7 +6,7 @@
 	Sexo VARCHAR(10) NOT NULL,
 	Foto_Perfil VARCHAR(100) NOT NULL,
 	Cidade VARCHAR(100) NOT NULL,
-	Nascimento DATE NOT NULL,
+	Nascimento VARCHAR(10) NOT NULL,
 	CONSTRAINT UsuarioPK PRIMARY KEY(Email)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE Evento(
 	Usuario VARCHAR(100) NOT NULL,	
 	ID_Lugar INT NOT NULL,
 	Nome VARCHAR(100) NOT NULL,
-	Data DATE NOT NULL,	
+	Data VARCHAR(10) NOT NULL,	
 	Hora TIME NOT NULL,	
 	Local VARCHAR(100) NOT NULL,
 	Descricao VARCHAR(100) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE Presenca_Lugar(
 	Usuario VARCHAR(100),
 	Comentario VARCHAR(100) NOT NULL,	
 	Status VARCHAR(50) NOT NULL,
-	Data DATE,
+	Data VARCHAR(10),
 	CONSTRAINT Presenca_LugarPK PRIMARY KEY(ID_Lugar, Usuario, Data),
 	CONSTRAINT Presenca_LugarFK1 FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 
@@ -83,7 +83,7 @@ CREATE TABLE Presenca_Evento(
 	Usuario VARCHAR(100),
 	Comentario VARCHAR(100) NOT NULL,	
 	Status VARCHAR(50) NOT NULL,
-	Data DATE,
+	Data VARCHAR(10),
 	CONSTRAINT Presenca_EventoPK PRIMARY KEY(ID_Evento, Usuario, Data),
 	CONSTRAINT Presenca_EventoFK1 FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 

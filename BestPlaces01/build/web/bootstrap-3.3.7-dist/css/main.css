@@ -10,11 +10,6 @@
   margin: 2% 30% 0% 30%;
 }
 
-#navbarToggle{
-	margin-right: 80%;
-	margin-left: -3%;
-}
-
 #divImg{
   margin: 15% 0% 4% 0%;
 }
@@ -32,8 +27,7 @@
 }
 
 #divMenu{
-  margin: 0% 20% 0% 20%;  
-  padding: 0% 0% 10% 0%;
+   padding: 0% 10% 0% 0%;
 }
 
 #linkMenu{
