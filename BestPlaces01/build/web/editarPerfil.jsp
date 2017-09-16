@@ -24,7 +24,7 @@
                     <h1>Editar Perfil</h1>
                 </div>
             </div>
-                <form action="FrontControl" method="post">
+                <form action="FrontControl" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" name="nome" value="${sessionScope.nome}" class="form-control" placeholder="Nome" aria-describedby="basic-addon1">
                     </div>

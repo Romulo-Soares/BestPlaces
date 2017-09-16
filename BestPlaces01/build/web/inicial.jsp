@@ -21,13 +21,12 @@
 
                 <div class="text-center">
                     <h4>${sessionScope.nome}</h4>
-                    <img id="fotoPerfil" src="" alt="FotoPerfil" class="img-circle">
+                    <img id="fotoPerfil" src="${sessionScope.foto}" alt="FotoPerfil" class="img-circle">
 
                     <a name="edPerfil" href="editarPerfil.jsp" class="btn btn-danger btn-md btn-block" role="button">Editar Perfil</a>
                     <a name="amigos" href="" class="btn btn-danger btn-md btn-block" role="button">Amigos</a>
                     <a name="eventos" href="" class="btn btn-danger btn-md btn-block" role="button">Eventos</a>
-                    <a name="locais" href="" class="btn btn-danger btn-md btn-block" role="button">Locais</a>
-                    <a name="mensagens" href="" class="btn btn-danger btn-md btn-block" role="button">Mensagens</a></br>
+                    <a name="locais" href="" class="btn btn-danger btn-md btn-block" role="button">Locais</a></br>
                     <form method="post" action="FrontControl" id="excluir">
                         <input type="hidden" name="identificador" value="ExcluiConta">
                         <a name="excluir" href="#" onclick="document.getElementById('excluir').submit();" class="btn btn-danger btn-md btn-block" role="button">Excluir Conta</a>  

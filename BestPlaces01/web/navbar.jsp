@@ -16,7 +16,7 @@
     </head>
     <body>
          
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
               <div class="navbar-header">
                   <a class="navbar-brand" id="linkMenu" href="inicial.jsp"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
@@ -25,6 +25,8 @@
                   <form method="post" action="FrontControl" id="deslogar">
                       <input type="hidden" name="identificador" value="DeslogaSistema">
                       <ul class="nav navbar-nav navbar-right">
+                      <li role="presentation"><a id="linkMenu" href="#">Solicitações <span class="badge">5</span></a></li>
+                      <li role="presentation"><a id="linkMenu" href="#">Mensagens <span class="badge">3</span></a></li>
                       <li><a id="linkMenu" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                       </ul>
                   </form>

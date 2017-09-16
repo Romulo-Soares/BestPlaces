@@ -11,7 +11,7 @@
     </head>
     <body>
         
-       <nav class="navbar navbar-inverse">
+       <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
               <div class="navbar-header">
                 <a class="navbar-brand" id="linkMenu"><span class="glyphicon glyphicon-list-alt"></span> BestPlaces</a>

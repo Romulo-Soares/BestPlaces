@@ -21,9 +21,8 @@
 #fotoPerfil{
    background-color: white;
    margin: 10% 0% 10% 0%;
-   height: 130px;
-   width: 55%;
-   border-radius: 50%;
+   height: 125px;
+   width: 65%;
 }
 
 #divMenu{
@@ -32,6 +31,10 @@
 
 #linkMenu{
 	color: white;
+}
+
+#navBarNav{
+    border-radius: 0;
 }
 
 .text-center .img-responsive {

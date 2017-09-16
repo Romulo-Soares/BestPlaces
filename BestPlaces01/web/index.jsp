@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" id="linkMenu"><span class="glyphicon glyphicon-log-in"></span> BestPlaces</a>
@@ -30,11 +30,11 @@
 
             <form method="post" action="FrontControl">
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1"> 
+                    <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" required> 
                 </div>
 
                 <div class="form-group"> 
-                    <input type="password" name="senha" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
+                    <input type="password" name="senha" class="form-control" placeholder="Senha" aria-describedby="basic-addon1" required>
                 </div> 
 
                 <div class="form-group" id="divBtLogin">

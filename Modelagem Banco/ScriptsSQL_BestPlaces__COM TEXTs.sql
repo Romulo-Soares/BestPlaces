@@ -1,10 +1,10 @@
-﻿CREATE TABLE Usuario(
+CREATE TABLE Usuario(
 	Email VARCHAR(100),
 	Nome VARCHAR(100) NOT NULL,
 	Senha VARCHAR(100) NOT NULL,
 	Profissao VARCHAR(100) NOT NULL,	
 	Sexo VARCHAR(10) NOT NULL,
-	Foto_Perfil VARCHAR(100) NOT NULL,
+	Foto_Perfil TEXT NOT NULL,
 	Cidade VARCHAR(100) NOT NULL,
 	Nascimento VARCHAR(10) NOT NULL,
 	CONSTRAINT UsuarioPK PRIMARY KEY(Email)
@@ -16,7 +16,7 @@ CREATE TABLE Lugar(
 	Nome VARCHAR(100) NOT NULL,	
 	Rua VARCHAR(100) NOT NULL,
 	Cidade VARCHAR(100) NOT NULL,
-	Descricao VARCHAR(100) NOT NULL,
+	Descricao TEXT NOT NULL,
 	Estado VARCHAR(100) NOT NULL,
 	Tipo VARCHAR(100) NOT NULL,
 	CONSTRAINT LugarPK PRIMARY KEY(ID),
@@ -32,9 +32,9 @@ CREATE TABLE Evento(
 	ID_Lugar INT NOT NULL,
 	Nome VARCHAR(100) NOT NULL,
 	Data VARCHAR(10) NOT NULL,	
-	Hora TIME NOT NULL,	
+	Hora VARCHAR(15) NOT NULL,	
 	Local VARCHAR(100) NOT NULL,
-	Descricao VARCHAR(100) NOT NULL,
+	Descricao TEXT NOT NULL,
 	CONSTRAINT EventoPK PRIMARY KEY(ID),
 	CONSTRAINT EventoFK1 FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 
@@ -64,7 +64,7 @@ CREATE TABLE Avaliacao_Lugar(
 CREATE TABLE Presenca_Lugar(	
 	ID_Lugar INT,
 	Usuario VARCHAR(100),
-	Comentario VARCHAR(100) NOT NULL,	
+	Comentario TEXT NOT NULL,	
 	Status VARCHAR(50) NOT NULL,
 	Data VARCHAR(10),
 	CONSTRAINT Presenca_LugarPK PRIMARY KEY(ID_Lugar, Usuario, Data),
@@ -81,7 +81,7 @@ CREATE TABLE Presenca_Lugar(
 CREATE TABLE Presenca_Evento(	
 	ID_Evento INT,
 	Usuario VARCHAR(100),
-	Comentario VARCHAR(100) NOT NULL,	
+	Comentario TEXT NOT NULL,	
 	Status VARCHAR(50) NOT NULL,
 	Data VARCHAR(10),
 	CONSTRAINT Presenca_EventoPK PRIMARY KEY(ID_Evento, Usuario, Data),
@@ -128,7 +128,7 @@ CREATE TABLE Interacao(
 
 CREATE TABLE Fotos_Lugar(
 	ID_Lugar INT,	
-	Foto VARCHAR(100),
+	Foto TEXT,
 	CONSTRAINT Fotos_LugarPK PRIMARY KEY(ID_Lugar, Foto),	
 	CONSTRAINT Fotos_LugarFK FOREIGN KEY(ID_Lugar) 
 		REFERENCES Lugar(ID) 
@@ -138,7 +138,7 @@ CREATE TABLE Fotos_Lugar(
 
 CREATE TABLE Fotos_Presenca_Lugar(	
 	ID_Lugar INT,
-	Foto VARCHAR(100),
+	Foto TEXT,
 	CONSTRAINT Fotos_Presenca_LugarPK PRIMARY KEY(ID_Lugar, Foto),	
 	CONSTRAINT Fotos_Presenca_LugarFK FOREIGN KEY (ID_Lugar) 
 		REFERENCES Lugar(ID) 
@@ -148,7 +148,7 @@ CREATE TABLE Fotos_Presenca_Lugar(
 
 CREATE TABLE Fotos_Presenca_Evento(	
 	ID_Evento INT,
-	Foto VARCHAR(100),
+	Foto TEXT,
 	CONSTRAINT Fotos_Presenca_EventoPK PRIMARY KEY(ID_Evento, Foto),	
 	CONSTRAINT Fotos_Presenca_EventoFK FOREIGN KEY (ID_Evento) 
 		REFERENCES Evento(ID) 
@@ -159,7 +159,7 @@ CREATE TABLE Fotos_Presenca_Evento(
 CREATE TABLE Mensagem(	
 	Usuario_Ecaminhante VARCHAR(100),
 	Usuario_Destino VARCHAR(100),
-	Mensagem VARCHAR(10000) NOT NULL,
+	Mensagem TEXT NOT NULL,
 	CONSTRAINT MensagemPK PRIMARY KEY(Usuario_Ecaminhante, Usuario_Destino),	
 	CONSTRAINT MensagemFK1 FOREIGN KEY(Usuario_Ecaminhante) 
 		REFERENCES Usuario(Email) 
