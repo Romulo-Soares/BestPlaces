@@ -24,10 +24,10 @@
                 <img class="img-thumbnail" src="Imagens\erro.png" alt="Erro" id="imgErro">
             
             <div class="alert alert-danger" role="alert" id="divErro">
-                <h4>Ocorreu um erro Inesperado :(</h4>
-                <h6>Sempre verifique se seus dados estão corretos!</h6>
+                <h4>Ocorreu um erro :(</h4>
+                <h6>Você precisa estar logado no sistema para acessar essa página</h6>
             
-                <a href="index.jsp" class="alert-link">Vamos tentar novamente</a>
+                <a href="index.jsp" class="alert-link">Realize o login no BestPlaces</a>
             </div>
             </center>
         </div>

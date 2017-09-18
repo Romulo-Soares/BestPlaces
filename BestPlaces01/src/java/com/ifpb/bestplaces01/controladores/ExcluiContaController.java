@@ -31,6 +31,8 @@ public class ExcluiContaController implements ICommand, IFileManager{
             removeFile(pathFolder + sep + fotoLogada.substring(fotoLogada.lastIndexOf(sep)+1));
             
             res.sendRedirect("index.jsp");
+        }else{
+            res.sendRedirect("erro.jsp");
         }
     }
     

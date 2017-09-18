@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.ifpb.bestplaces01.interfaces.IFileManager;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class AtualizaUsuarioController implements ICommand, IFileManager {
 
@@ -22,7 +24,18 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
         String emailLogado = (String) session.getAttribute("email");
         String fotoLogada = (String) session.getAttribute("foto");
         
-        //Monta caminho da pasta de upload da imagem
+        Usuario u = new Usuario();
+        
+        String data = req.getParameter("nascimento");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(data,formatter);
+        
+        if(date.isAfter(LocalDate.now())){
+            res.sendRedirect("erroDataUp.jsp"); 
+        }else{
+            u.setNascimento(req.getParameter("nascimento"));
+            
+            //Monta caminho da pasta de upload da imagem
         String foto = uploadFile("fotosPerfil", req, 
                 req.getPart("fotoPerfil"), req.getParameter("email"));
         
@@ -30,17 +43,16 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
         String pathFolder = req.getServletContext().getRealPath("fotosPerfil");
         removeFile(pathFolder + sep + fotoLogada.
                 substring(fotoLogada.lastIndexOf(sep)+1));
+        u.setFotoPerfil(foto);
+        }
         
-        Usuario u = new Usuario();
         u.setNome(req.getParameter("nome"));
         u.setEmail(req.getParameter("email"));
         u.setCidade(req.getParameter("cidade"));
-        u.setFotoPerfil(foto);
         u.setProfissao(req.getParameter("profissao"));
         u.setSenha(req.getParameter("senha"));
         u.setSexo(req.getParameter("sexo"));
-        u.setNascimento(req.getParameter("nascimento"));
-
+        
         UsuarioDAO userDAO = new UsuarioDAO();
         if (userDAO.update(emailLogado, u)) {
             session.setAttribute("email", u.getEmail());
@@ -53,6 +65,8 @@ public class AtualizaUsuarioController implements ICommand, IFileManager {
             session.setAttribute("nascimento", u.getNascimento());
 
             req.getRequestDispatcher("inicial.jsp").forward(req, res);
+        }else{
+            res.sendRedirect("erro.jsp");
         }
 
     }

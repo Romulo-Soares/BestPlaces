@@ -14,7 +14,7 @@
        <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" id="linkMenu"><span class="glyphicon glyphicon-list-alt"></span> BestPlaces</a>
+                  <a class="navbar-brand" id="linkMenu" href="index.jsp"><span class="glyphicon glyphicon-list-alt"></span> BestPlaces</a>
               </div>
             </div>
         </nav>
@@ -28,38 +28,38 @@
             </div>
                 <form action="FrontControl" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" name="nome" class="form-control" placeholder="Nome" aria-describedby="basic-addon1">
+                        <input type="text" name="nome" class="form-control" placeholder="Nome" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-describedby="basic-addon1">
+                        <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="date" name="nascimento" data-toggle="tooltip" title="Informe sua data de nascimento" class="form-control" placeholder="Nascimento" aria-describedby="basic-addon1">
+                        <input type="date" name="nascimento" data-toggle="tooltip" title="Informe sua data de nascimento" class="form-control" placeholder="Nascimento" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                        <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="senha" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="profissao" class="form-control" placeholder="Profissão" aria-describedby="basic-addon1">
+                        <input type="text" name="profissao" class="form-control" placeholder="Profissão" aria-describedby="basic-addon1" required>
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control" name="sexo" data-toggle="tooltip" title="Informe seu sexo">
+                        <select class="form-control" name="sexo" data-toggle="tooltip" title="Informe seu sexo" required>
                                <option readonly>Masculino</option>
                                <option>Feminino</option>
                                <option>Outro</option>
                         </select>
                     </div>  
 
-                    <input data-toggle="tooltip" name="fotoPerfil" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1">
+                    <input data-toggle="tooltip" name="fotoPerfil" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1" required>
 
                     <div class="form-group" id="divBtLogin">
                         <input type="hidden" name="identificador" value="CadastroUsuario"> 

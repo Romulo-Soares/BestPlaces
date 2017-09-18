@@ -39,7 +39,7 @@ public class LoginUsuarioController implements ICommand, IAutenticavelUsuario {
             req.getRequestDispatcher("inicial.jsp").forward(req, res);
             
         } else {
-            res.sendRedirect("index.jsp");
+            res.sendRedirect("erroLogin.jsp");
         }
 
     }

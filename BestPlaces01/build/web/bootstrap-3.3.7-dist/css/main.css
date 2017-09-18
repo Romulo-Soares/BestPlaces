@@ -37,6 +37,14 @@
     border-radius: 0;
 }
 
+#divErro{
+    margin-top: 15%;
+}
+
+#imgErro{
+    margin-top: 15%;
+}
+
 .text-center .img-responsive {
     margin: 0 auto;
 }

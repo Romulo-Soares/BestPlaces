@@ -141,4 +141,23 @@ public class UsuarioDAO implements IUsuarioDAO{
         return retorno;
     }
     
+    @Override
+    public boolean userExists(String email) throws ClassNotFoundException, SQLException{
+
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM usuario WHERE email = ?");
+
+        stmt.setString(1, email);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) { 
+            con.close();
+            return true;
+        } else {
+            con.close();
+            return false;
+        }
+    }
+    
 }

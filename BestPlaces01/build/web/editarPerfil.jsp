@@ -70,7 +70,7 @@
                         </script>
                     </div>  
 
-                    <input data-toggle="tooltip" name="fotoPerfil" value="${sessionScope.foto}" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1">
+                        <input data-toggle="tooltip" name="fotoPerfil" value="${sessionScope.foto}" title="Escolha sua foto do perfil" type="file" class="form-control" aria-describedby="basic-addon1" required>
 
                     <div class="form-group" id="divBtLogin">
                         <input type="hidden" name="identificador" value="AtualizaUsuario"> 
