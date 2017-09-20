@@ -45,6 +45,62 @@
     margin-top: 15%;
 }
 
+#btPerfil{
+    float: left;
+}
+
+#fotoPesquisa{
+   margin: 1% 0% 1% 20%;
+   height: 95px;
+   width: 20%;
+}
+
+#divResultado{
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+#divPes{
+    margin: 2% 25% 0% 0%;
+    float: right;
+}
+
+#fotoPerfilUsuario{
+   margin: 2% 2% 2% 35%;
+   height: 125px;
+   width: 30%;
+}
+
+#divPerfil{
+    margin: 0% 25% 0% 25%;
+}
+
+#divSoli{
+    margin: -18% 1% 0% 0%;
+    float: right;
+}
+
+#divSoliTit{
+    margin: 5% 40% 0% 0%;
+    float: right;
+}
+
+#fotoAmigo{
+   margin: 1% 1% 0% 1%;
+   height: 95px;
+   width: 20%;
+}
+
+#divMensAmigo{
+    overflow-y: auto; 
+}
+
+#divMens{
+    max-height: 150px;
+    overflow-x: auto;
+    margin: 0% 0% 2% 0%;
+}
+
 .text-center .img-responsive {
     margin: 0 auto;
 }

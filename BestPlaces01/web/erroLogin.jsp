@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,7 @@
         <title>Erros</title>
     </head>
     <body>
-        
+
         <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -18,22 +17,22 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="container" id="divLog">
             <center>
                 <img class="img-thumbnail" src="Imagens\erro.png" alt="Erro" id="imgErro">
-            
-            <div class="alert alert-danger" role="alert" id="divErro">
-                <h4>Ocorreu um erro :(</h4>
-                <h6>Seu login e senha estão incorretos !</h6>
-            
-                <a href="index.jsp" class="alert-link">Vamos tentar novamente</a>
-            </div>
+
+                <div class="alert alert-danger" role="alert" id="divErro">
+                    <h4>Ocorreu um erro :(</h4>
+                    <h6>Seu login e senha estão incorretos !</h6>
+
+                    <a href="index.jsp" class="alert-link">Vamos tentar novamente</a>
+                </div>
             </center>
         </div>
-          
+
         <script src="bootstrap-3.3.7-dist\js\jquery-3.2.1.min.js"></script>
         <script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
-        
+
     </body>
 </html>

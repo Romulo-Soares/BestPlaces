@@ -1,9 +1,3 @@
-<%-- 
-    Document   : navbar
-    Created on : 14/09/2017, 20:54:13
-    Author     : Jozimar & Rômulo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,25 +9,25 @@
         <title>Navbar</title>
     </head>
     <body>
-         
+
         <nav class="navbar navbar-inverse" id="navBarNav">
             <div class="container-fluid">
-              <div class="navbar-header">
-                  <a class="navbar-brand" id="linkMenu" href="inicial.jsp"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
-              </div>
-              
-                  <form method="post" action="FrontControl" id="deslogar">
-                      <input type="hidden" name="identificador" value="DeslogaSistema">
-                      <ul class="nav navbar-nav navbar-right">
-                      <li role="presentation"><a id="linkMenu" href="#">Solicitações <span class="badge">5</span></a></li>
-                      <li role="presentation"><a id="linkMenu" href="#">Mensagens <span class="badge">3</span></a></li>
-                      <li><a id="linkMenu" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                      </ul>
-                  </form>
-              
+                <div class="navbar-header">
+                    <a class="navbar-brand" id="linkMenu" href="inicial.jsp"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
+                </div>
+
+                <form method="post" action="FrontControl" id="deslogar">
+                    <input type="hidden" name="identificador" value="DeslogaSistema">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li role="presentation"><a id="linkMenu" href="solicitacao.jsp"><span class="glyphicon glyphicon-ok"></span> Solicitações <span class="badge">1</span></a></li>
+                        <li role="presentation"><a id="linkMenu" href="mensagem.jsp"><span class="glyphicon glyphicon-comment"></span> Mensagens <span class="badge">3</span></a></li>
+                        <li><a id="linkMenu" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </form>
+
             </div>
         </nav>
-        
+
         <script src="bootstrap-3.3.7-dist\js\jquery-3.2.1.min.js"></script>
         <script src="bootstrap-3.3.7-dist\js\bootstrap.min.js"></script>
     </body>

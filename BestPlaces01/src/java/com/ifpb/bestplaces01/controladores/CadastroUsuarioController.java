@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ifpb.bestplaces01.interfaces.ICommand;
 import com.ifpb.bestplaces01.interfaces.IFileManager;
-import static java.lang.System.exit;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -24,7 +23,6 @@ public class CadastroUsuarioController implements ICommand, IFileManager {
 
         if(userDAO.userExists(req.getParameter("email"))){
             res.sendRedirect("erro.jsp");
-            exit(0);
         }else{
             
             u.setEmail(req.getParameter("email"));

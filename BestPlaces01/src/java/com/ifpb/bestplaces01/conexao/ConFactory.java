@@ -11,7 +11,7 @@ public class ConFactory {
 
         Class.forName("org.postgresql.Driver");
 
-        String url = "jdbc:postgresql://localhost:5433/BestPlaces";
+        String url = "jdbc:postgresql://localhost:5432/BestPlaces";
         String usuario = "postgres";
         String senha = "postgres";
         

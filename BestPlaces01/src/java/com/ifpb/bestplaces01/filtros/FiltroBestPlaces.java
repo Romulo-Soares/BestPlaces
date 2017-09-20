@@ -1,7 +1,6 @@
 
 package com.ifpb.bestplaces01.filtros;
 
-import com.ifpb.bestplaces01.entidades.Usuario;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
