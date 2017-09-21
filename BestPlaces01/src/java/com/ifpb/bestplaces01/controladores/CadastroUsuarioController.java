@@ -35,6 +35,7 @@ public class CadastroUsuarioController implements ICommand, IFileManager {
                 res.sendRedirect("erroData.jsp"); 
             }else{
                 u.setNascimento(req.getParameter("nascimento"));
+                
                 String foto = uploadFile("fotosPerfil", req, 
                 req.getPart("fotoPerfil"), req.getParameter("email"));
                 u.setFotoPerfil(foto);

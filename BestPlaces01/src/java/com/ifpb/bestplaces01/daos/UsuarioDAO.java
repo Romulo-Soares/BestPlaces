@@ -160,4 +160,34 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
     }
     
+    @Override
+    public List<Usuario> readUserByName(String nome) throws SQLException, ClassNotFoundException {
+        
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM usuario WHERE nome ILIKE '"+nome+"%'");
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        List<Usuario> usuarios = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario usuario = new Usuario();
+            usuario.setNome(rs.getString("nome"));
+            usuario.setNascimento(rs.getString("nascimento"));
+            usuario.setSexo(rs.getString("sexo"));
+            usuario.setEmail(rs.getString("email"));
+            usuario.setSenha(rs.getString("senha"));
+            usuario.setProfissao(rs.getString("profissao"));
+            usuario.setFotoPerfil(rs.getString("foto_Perfil"));
+            usuario.setCidade(rs.getString("cidade"));
+            
+            usuarios.add(usuario);
+            
+        }
+        con.close();
+        return usuarios;
+
+    }
+    
 }

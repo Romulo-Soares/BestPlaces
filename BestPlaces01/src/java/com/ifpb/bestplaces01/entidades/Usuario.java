@@ -13,7 +13,6 @@ public class Usuario {
     private String profissao;
 
     public Usuario(){
-        
     }
 
     public Usuario(String nome, String nascimento, String sexo, String email, 
@@ -26,6 +25,7 @@ public class Usuario {
         this.cidade = cidade;
         this.fotoPerfil = fotoPerfil;
         this.profissao = profissao;
+        
     }
 
     public String getNome() {
@@ -96,5 +96,9 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "nome=" + nome + ", nascimento=" + nascimento + ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + ", cidade=" + cidade + ", fotoPerfil=" + fotoPerfil + ", profissao=" + profissao + '}';
     }
+
+    
+
+    
     
 }
