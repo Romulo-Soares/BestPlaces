@@ -10,12 +10,11 @@
         <div class="container-fluid">
             <div class="col-sm-3" id="divMenu">
 
-                <div class="text-center">
+                <div class="text-center" id="divConteudoMenu">
                     <h4>${sessionScope.nome}</h4>
                     <img id="fotoPerfil" src="${sessionScope.foto}" alt="FotoPerfil" class="img-circle">
 
                     <a name="edPerfil" href="editarPerfil.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-pencil"></span>Editar Perfil</a>
-                    <a name="pesquisarUsuario" href="pesquisarUsuario.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-search"></span>Pesquisar Usuário</a>
                     <a name="amigos" href="amigos.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-user"></span><span id="btPerfil" class="glyphicon glyphicon-user"></span>Amigos</a>
                     <a name="eventos" href="#" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-calendar"></span>Eventos</a>
                     <a name="locais" href="lugar.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-map-marker"></span>Lugares</a></br>
@@ -26,6 +25,13 @@
 
                 </div>
             </div>
+             
+                    <div class="col-sm-3" id="divIniAmig">
+                        <div class="text-center" id="divConteudoMenu">
+                            <h1>Amigos</h1>
+                        </div>
+                    </div>
+            
         </div>
 
     </body>

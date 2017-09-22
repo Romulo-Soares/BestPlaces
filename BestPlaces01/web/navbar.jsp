@@ -15,13 +15,26 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" id="linkMenu" href="inicial.jsp"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
                 </div>
+                
+                <div class="nav navbar-nav navbar-left" id="divNavPes">
+                <form action="pesquisarUsuario.jsp" method="post" name="pesquisarUsuario">   
+                    <div class="input-group input-group">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" name="nome" class="form-control" placeholder="Nome do Usuário" aria-describedby="basic-addon1" required>
+                        <div class="input-group-btn">
+                            <input type="hidden" name="identificador" value="PesquisarUsuario"> 
+                            <button class="btn btn-danger btn-md btn-block" role="button" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+                </div>
 
                 <form method="post" action="FrontControl" id="deslogar">
                     <input type="hidden" name="identificador" value="DeslogaSistema">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation"><a id="linkMenu" href="solicitacao.jsp"><span class="glyphicon glyphicon-ok"></span> Solicitações <span class="badge">1</span></a></li>
                         <li role="presentation"><a id="linkMenu" href="mensagem.jsp"><span class="glyphicon glyphicon-comment"></span> Mensagens <span class="badge">3</span></a></li>
-                        <li><a id="linkMenu" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a id="linkMenuLog" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </form>
 

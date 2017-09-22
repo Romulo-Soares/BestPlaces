@@ -26,11 +26,39 @@
 }
 
 #divMenu{
-   padding: 0% 10% 0% 0%;
+   margin: -1.6% 0% 0% 0%; 
+   width: 15%;
+   padding: 0% 0% 11% 0%;
+   border-style: solid;
+   border-color: lightslategray;
+   border-left: 1px;
+   border-bottom: 0px;
+   border-top: 0px;
+}
+
+#divIniAmig{
+   margin: -1.6% 0% 0% 0%; 
+   width: 15%;
+   border-style: solid;
+   border-color: lightslategray;
+   border-right: 1px;
+   border-bottom: 0px;
+   border-top: 0px;
+   float: right;
+   padding: 0% 0% 37% 0%;
+}
+
+#divConteudoMenu{
+    margin: 20% 10% 0% 0%;
 }
 
 #linkMenu{
 	color: white;
+        
+}
+
+#linkMenuLog{
+   color: #d9534f;
 }
 
 #navBarNav{
@@ -50,7 +78,7 @@
 }
 
 #fotoPesquisa{
-   margin: 1% 0% 1% 20%;
+   margin: 1% 0% 1% 1%;
    height: 95px;
    width: 20%;
 }
@@ -61,8 +89,13 @@
 }
 
 #divPes{
-    margin: 2% 25% 0% 0%;
+    margin: 2% 40% 0% 0%;
     float: right;
+}
+
+#divPesbt{
+    margin: -15% 5% 0% 0%;
+    float: right; 
 }
 
 #fotoPerfilUsuario{
@@ -81,8 +114,12 @@
 }
 
 #divSoliTit{
-    margin: 5% 40% 0% 0%;
+    margin: 1% 40% 0% 0%;
     float: right;
+}
+
+#hDados{
+    color: lightslategray;
 }
 
 #fotoAmigo{
@@ -99,6 +136,11 @@
     max-height: 150px;
     overflow-x: auto;
     margin: 0% 0% 2% 0%;
+}
+
+#divNavPes{
+    margin: 0.6% 0% 0% 20%;
+    width: 30%;
 }
 
 .text-center .img-responsive {

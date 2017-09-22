@@ -20,7 +20,9 @@
                     <img id="fotoAmigo" src="Imagens/logo2.png" alt="FotoPerfil" class="img-circle">
 
                     <div id="divSoliTit" class="form-group">
-                        <h4>Nome do Usuario</h4>   
+                        <h4>Nome do Usuario</h4> 
+                        <h5 id="hDados">Endereço</h5> 
+                        <h5 id="hDados">Profissão</h5> 
                     </div>
 
                     <div id="divSoli" class="form-group">

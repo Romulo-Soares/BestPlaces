@@ -19,18 +19,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <form action="pesquisarUsuario.jsp" method="post" name="pesquisarUsuario">   
-                    <div class="input-group input-group">
-                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" name="nome" class="form-control" placeholder="Nome do Usuário" aria-describedby="basic-addon1" required>
-                        <div class="input-group-btn">
-                            <input type="hidden" name="identificador" value="PesquisarUsuario"> 
-                            <button class="btn btn-danger btn-md btn-block" role="button" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <c:if test="${empty usuarios}">
                 <div class="form-group">
                     <div class="col-md-12 text-center" id="divResultado">
@@ -46,10 +34,12 @@
                                 <img id="fotoPesquisa" src="${usuarios.fotoPerfil}" alt="FotoPerfil" class="img-circle">
                                 <div id="divPes" class="form-group">
                                     <h4>${usuarios.nome}</h4>
-                                    <h9>${usuarios.cidade}</h9><br>
-                                    <h9>${usuarios.profissao}</h9>
+                                    <h6 id="hDados">${usuarios.cidade}</h6>
+                                    <h6 id="hDados">${usuarios.profissao}</h6>
+                                </div>
+                                <div id="divPesbt" class="form-group">
                                     <input name="email" type="hidden" value="${usuarios.email}">
-                                    <input type="submit" class="btn btn-danger btn-md btn-block" role="button" value="Visualizar Perfil">  
+                                    <input type="submit" class="btn btn-danger btn-md btn-block" role="button" value="Visualizar Perfil"> 
                                 </div>
                             </div>  
                         </div>
