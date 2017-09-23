@@ -14,7 +14,8 @@ import java.util.List;
 public class UsuarioDAO implements IUsuarioDAO{
     
     @Override
-    public Usuario read(String email) throws SQLException, ClassNotFoundException {
+    public Usuario read(String email) 
+            throws SQLException, ClassNotFoundException {
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -46,7 +47,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
     
     @Override
-    public List<Usuario> list() throws SQLException, ClassNotFoundException {
+    public List<Usuario> list() 
+            throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -76,7 +78,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean insert(Usuario u) throws SQLException, ClassNotFoundException {
+    public boolean insert(Usuario u) 
+            throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -101,7 +104,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean delete(String email) throws SQLException, ClassNotFoundException {
+    public boolean delete(String email) 
+            throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -117,7 +121,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean update(String email, Usuario u) throws SQLException, ClassNotFoundException {
+    public boolean update(String email, Usuario u) 
+            throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -142,7 +147,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
     
     @Override
-    public boolean userExists(String email) throws ClassNotFoundException, SQLException{
+    public boolean userExists(String email) 
+            throws ClassNotFoundException, SQLException{
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -161,11 +167,15 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
     
     @Override
-    public List<Usuario> readUserByName(String nome) throws SQLException, ClassNotFoundException {
+    public List<Usuario> readUserByName(String nome, String emailExcecao) 
+            throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM usuario WHERE nome ILIKE '"+nome+"%'");
+                "SELECT * FROM usuario WHERE email <> ? AND "
+                        + "nome ILIKE '"+nome+"%'");
+        
+        stmt.setString(1, emailExcecao);
         
         ResultSet rs = stmt.executeQuery();
         

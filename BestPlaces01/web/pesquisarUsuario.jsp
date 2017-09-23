@@ -10,7 +10,7 @@
         <%@ include file="navbar.jsp"%>
     </head>
     <body>
-        <ct:findUserByName nome="${param.nome}"/>
+        <ct:findUserByName nome="${param.nome}" emailExcecao="${sessionScope.email}"/>
         <div class="container" id="divCad">
 
             <div class="row" id="divCadTit">
@@ -28,14 +28,14 @@
             </c:if>
             <c:if test="${not empty usuarios and not empty param.nome}">
                 <c:forEach var="usuarios" items="${usuarios}">
-                    <form action="Perfil.jsp" method="post" name="perfil">
+                    <form action="perfil.jsp" method="post" name="perfil">
                         <div class="form-group">
                             <div id="divResultado">
                                 <img id="fotoPesquisa" src="${usuarios.fotoPerfil}" alt="FotoPerfil" class="img-circle">
                                 <div id="divPes" class="form-group">
                                     <h4>${usuarios.nome}</h4>
-                                    <h6 id="hDados">${usuarios.cidade}</h6>
-                                    <h6 id="hDados">${usuarios.profissao}</h6>
+                                    <h6 id="hDados">Cidade: ${usuarios.cidade}</h6>
+                                    <h6 id="hDados">Profissão: ${usuarios.profissao}</h6>
                                 </div>
                                 <div id="divPesbt" class="form-group">
                                     <input name="email" type="hidden" value="${usuarios.email}">

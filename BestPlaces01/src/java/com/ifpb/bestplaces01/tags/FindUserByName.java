@@ -10,18 +10,27 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class FindUserByName extends SimpleTagSupport {
     
     private String nome;
+    private String emailExcecao;
     
     @Override
     public void doTag(){
         
         UsuarioDAO userDAO = new UsuarioDAO();
         try {
-            getJspContext().setAttribute("usuarios", userDAO.readUserByName(nome));
+            getJspContext().setAttribute("usuarios", userDAO.readUserByName(nome, emailExcecao));
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(FindUserByName.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    public String getEmailExcecao() {
+        return emailExcecao;
+    }
+
+    public void setEmailExcecao(String emailExcecao) {
+        this.emailExcecao = emailExcecao;
+    }
+    
     public String getNome() {
         return nome;
     }

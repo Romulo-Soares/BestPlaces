@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="ct" uri="/WEB-INF/tlds/CustomTags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,11 +30,11 @@
                     </div>
                 </form>
                 </div>
-
+                <ct:contaSolicitacoes usuarioInteragido="${sessionScope.email}"/>
                 <form method="post" action="FrontControl" id="deslogar">
                     <input type="hidden" name="identificador" value="DeslogaSistema">
                     <ul class="nav navbar-nav navbar-right"> 
-                        <li role="presentation"><a id="linkMenu" href="solicitacao.jsp"><span class="glyphicon glyphicon-ok"></span> Solicitações <span class="badge">1</span></a></li>
+                        <li role="presentation"><a id="linkMenu" href="solicitacao.jsp"><span class="glyphicon glyphicon-ok"></span> Solicitações <span class="badge"><c:if test="${qntSolicitacoes>0}">${qntSolicitacoes}</c:if></span></a></li>
                         <li role="presentation"><a id="linkMenu" href="mensagem.jsp"><span class="glyphicon glyphicon-comment"></span> Mensagens <span class="badge">3</span></a></li>
                         <li><a id="linkMenuLog" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
