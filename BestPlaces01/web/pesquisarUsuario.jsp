@@ -11,9 +11,9 @@
     </head>
     <body>
         <ct:findUserByName nome="${param.nome}" emailExcecao="${sessionScope.email}"/>
-        <div class="container" id="divCad">
-
-            <div class="row" id="divCadTit">
+        <div class="container-fluid">
+            <div id="divContPes">
+            <div class="row" id="divContMenTit">
                 <div class=" col-md-12 text-center">
                     <h1>Pesquisar Usuários</h1>
                 </div>
@@ -31,15 +31,15 @@
                     <form action="perfil.jsp" method="post" name="perfil">
                         <div class="form-group">
                             <div id="divResultado">
-                                <img id="fotoPesquisa" src="${usuarios.fotoPerfil}" alt="FotoPerfil" class="img-circle">
-                                <div id="divPes" class="form-group">
+                                <img id="fotoPesquisa" src="${usuarios.fotoPerfil}" alt="FotoPerfil" class="img-circle pull-left">
+                                <div id="divPes" class="form-group pull-left">
                                     <h4>${usuarios.nome}</h4>
                                     <h6 id="hDados">Cidade: ${usuarios.cidade}</h6>
                                     <h6 id="hDados">Profissão: ${usuarios.profissao}</h6>
                                 </div>
                                 <div id="divPesbt" class="form-group">
                                     <input name="email" type="hidden" value="${usuarios.email}">
-                                    <input type="submit" class="btn btn-danger btn-md btn-block" role="button" value="Visualizar Perfil"> 
+                                    <input type="submit" class="btn btn-danger btn-md btn-block" id="btPes" role="button" value="Visualizar Perfil"> 
                                 </div>
                             </div>  
                         </div>
@@ -47,5 +47,6 @@
                 </c:forEach>
             </c:if>   
         </div>
+      </div>
     </body>
 </html>

@@ -16,9 +16,9 @@
             </div>
 
             <div class="form-group">
-                <div id="divResultado">
-                    <img id="fotoPesquisa" src="Imagens/logo2.png" alt="FotoPerfil" class="img-circle">
-                    <div id="divPes" class="form-group">
+                <div id="divResultadoMens">
+                    <img id="fotoPesquisa" src="Imagens/logo2.png" alt="FotoPerfil" class="img-circle pull-left">
+                    <div id="divPes" class="form-group pull-left">
                         <h4>Nome do Usuário</h4>
                         <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">Responder</button>
 

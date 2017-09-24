@@ -13,7 +13,7 @@
         <ct:solicitado usuarioInteraginte="${sessionScope.email}" usuarioInteragido="${usuario.email}"/>
 
         <div class="container" id="divCad">
-            <div class="row" id="divCadTit">
+            <div class="row" id="divContMenTit">
                 <div class="col-md-12 text-center">
                     <h1>Perfil</h1>
                 </div>
@@ -28,15 +28,15 @@
                             <c:choose>
                                 <c:when test="${not amigo}">
                                     <c:if test="${not solicitado}">    
-                                        <input type="submit" name="fazerSolicitacao" class="btn btn-danger btn-md btn-block" role="button" value="Solicitar Amizade">
+                                        <input type="submit" name="fazerSolicitacao" class="btn btn-success btn-md btn-block" role="button" value="Solicitar Amizade">
                                     </c:if>
                                     <c:if test="${solicitado}"> 
-                                        - Solicitado - 
-                                        <input type="submit" name="desfazerSolicitacao" class="btn btn-danger btn-md btn-block" role="button" value="Desfazer Solicitacao">
+                                        <h5 class="text-success"><i class="glyphicon glyphicon-ok"></i> Solicitação enviada</h5>
+                                        <input type="submit" name="desfazerSolicitacao" class="btn btn-danger btn-md btn-block" role="button" value="Desfazer Solicitação">
                                     </c:if>
                                 </c:when>
                                 <c:otherwise>
-                                    - Amigo -
+                                    <h5 class="text-success"><i class="glyphicon glyphicon-user"></i> Amigo</h5>
                                 </c:otherwise>
                             </c:choose>
                         </div>

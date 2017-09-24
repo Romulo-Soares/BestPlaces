@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\main.css">
         <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
-        <title>Cadastro Lugar</title>
+        <title>Editar Lugar</title>
     </head>
     <body>
 
@@ -24,7 +24,7 @@
                 <div class="col-sm-6" id="divContMen">
                     <div class="row" id="divContMenTit">
                         <div class=" col-md-12 text-center">
-                            <h1>Cadastro Lugar</h1>
+                            <h1>Editar Lugar</h1>
                         </div>
                     </div>
                     <form action="FrontControl" method="post" enctype="multipart/form-data">
@@ -73,7 +73,7 @@
 
                         <div class="form-group" id="divBtLogin">
                             <input type="hidden" name="identificador" value="CadastraLugar"> 
-                            <input type="submit" name="adicionar" class="btn btn-danger btn-md btn-block" role="button" value="Adicionar">
+                            <input type="submit" name="adicionar" class="btn btn-danger btn-md btn-block" role="button" value="Atualizar">
                         </div>
                     </form>
                 </div>

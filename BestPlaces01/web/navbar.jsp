@@ -17,7 +17,6 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" id="linkMenu" href="inicial.jsp"><span class="glyphicon glyphicon-home"></span> BestPlaces</a>
                 </div>
-                
                 <div class="nav navbar-nav navbar-left" id="divNavPes">
                 <form action="pesquisarUsuario.jsp" method="post" name="pesquisarUsuario">   
                     <div class="input-group input-group">
@@ -36,7 +35,8 @@
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation"><a id="linkMenu" href="solicitacao.jsp"><span class="glyphicon glyphicon-ok"></span> Solicitações <span class="badge"><c:if test="${qntSolicitacoes>0}">${qntSolicitacoes}</c:if></span></a></li>
                         <li role="presentation"><a id="linkMenu" href="mensagem.jsp"><span class="glyphicon glyphicon-comment"></span> Mensagens <span class="badge">3</span></a></li>
-                        <li><a id="linkMenuLog" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li role="presentation"><a id="linkMenuLog" href="#" onclick="document.getElementById('deslogar').submit();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li role="presentation"></li>
                     </ul>
                 </form>
 

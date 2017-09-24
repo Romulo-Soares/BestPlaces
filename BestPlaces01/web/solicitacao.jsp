@@ -24,9 +24,9 @@
                     <c:forEach var="solicitacao" items="${solicitacoes}">
                         <div class="form-group">
                             <div id="divResultado">
-                                <img id="fotoAmigo" src="${solicitacao.fotoPerfil}" alt="FotoPerfil" class="img-circle">
+                                <img id="fotoAmigo" src="${solicitacao.fotoPerfil}" alt="FotoPerfil" class="img-circle pull-left">
 
-                                <div id="divSoliTit" class="form-group">
+                                <div id="divSoliTit" class="form-group pull-left">
                                     <h4>${solicitacao.nome}</h4>
                                     <h5 id="hDados">Cidade: ${solicitacao.cidade}</h5>
                                     <h5 id="hDados">Profissão: ${solicitacao.profissao}</h5>
@@ -35,8 +35,8 @@
                                     <input type="hidden" name="identificador" value="GerenciaInteracao">
                                     <input type="hidden" name="usuarioInteragido" value="${solicitacao.email}">
                                     <div id="divSoli" class="form-group">
-                                        <input type="submit" name="aceitarConvite" class="btn btn-danger btn-md btn-block" role="button" value="Aceitar Convite"> 
-                                        <input type="submit" name="rejeitarConvite" class="btn btn-danger btn-md btn-block" role="button" value="Rejeitar Convite">  
+                                        <input type="submit" name="aceitarConvite" id="btPes" class="btn btn-danger btn-md btn-block" role="button" value="Aceitar Convite"> 
+                                        <input type="submit" name="rejeitarConvite" id="btPes" class="btn btn-danger btn-md btn-block" role="button" value="Rejeitar Convite">  
                                     </div>
                                 </form>
                             </div>  
