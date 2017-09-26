@@ -156,16 +156,17 @@ CREATE TABLE Fotos_Presenca_Evento(
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Mensagem(	
-	Usuario_Ecaminhante VARCHAR(100),
-	Usuario_Destino VARCHAR(100),
+CREATE TABLE Mensagem(
+	Id SERIAL,	
+	Remetente VARCHAR(100),
+	Destinatario VARCHAR(100),
 	Mensagem TEXT NOT NULL,
-	CONSTRAINT MensagemPK PRIMARY KEY(Usuario_Ecaminhante, Usuario_Destino),	
-	CONSTRAINT MensagemFK1 FOREIGN KEY(Usuario_Ecaminhante) 
+	CONSTRAINT MensagemPK PRIMARY KEY(Id, Remetente, Destinatario),	
+	CONSTRAINT MensagemFK1 FOREIGN KEY(Remetente) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,
-	CONSTRAINT MensagemFK2 FOREIGN KEY(Usuario_Destino) 
+	CONSTRAINT MensagemFK2 FOREIGN KEY(Destinatario) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
