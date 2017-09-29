@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.ifpb.BestPlaces.Interfaces.IFotoDAO;
 import java.util.ArrayList;
 import java.util.List;
-import com.ifpb.BestPlaces.Interfaces.IFotoDAO;
 
 public class FotoDAO implements IFotoDAO{
     
@@ -40,35 +40,11 @@ public class FotoDAO implements IFotoDAO{
     }
     
     @Override
-    public List<Foto> list(String tabela) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConFactory.getConnection();
-        PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM "+tabela);
-
-        ResultSet rs = stmt.executeQuery();
-        
-        List<Foto> fotos = new ArrayList<>();
-
-        while (rs.next()) {
-            Foto foto = new Foto();
-            foto.setId(rs.getInt("id"));
-            foto.setFoto(rs.getString("foto"));
-
-            fotos.add(foto);
-            
-        }
-        con.close();
-        return fotos;
-
-    }
-
-    @Override
     public boolean insert(Foto f, String tabela) throws SQLException, ClassNotFoundException {
         
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
-                "INSERT INTO "+tabela+" (id, foto)"
+                "INSERT INTO "+tabela+" (id_local, foto)"
                     + "VALUES (?,?)");
 
         stmt.setInt(1, f.getId());
@@ -96,42 +72,31 @@ public class FotoDAO implements IFotoDAO{
         return retorno;
 
     }
-
-    @Override
-    public boolean update(int id, Foto f, String tabela) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConFactory.getConnection();
-        PreparedStatement stmt = con.prepareStatement(
-                "UPDATE "+tabela+" SET (id, foto) = (?,?) "
-                    + "WHERE id = ?");
-
-        stmt.setInt(1, f.getId());
-        stmt.setString(2, f.getFoto());
-
-        boolean retorno = stmt.executeUpdate() > 0;
-        
-        con.close();
-        return retorno;
-    }
     
     @Override
-    public boolean fotoExists(int id, String tabela) throws ClassNotFoundException, SQLException{
+    public List<Foto> listarFotosLocal(int idLocal)
+            throws SQLException, ClassNotFoundException {
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM "+tabela+" WHERE id = ?");
+                "SELECT foto FROM fotos_local WHERE id_local = (?)");
 
-        stmt.setInt(1, id);
+        stmt.setInt(1, idLocal);
+
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) { 
-            con.close();
-            return true;
-        } else {
-            con.close();
-            return false;
+        List<Foto> fotos = new ArrayList<>();
+
+        while (rs.next()) {
+            Foto foto = new Foto();
+            foto.setFoto(rs.getString("foto"));
+        
+            fotos.add(foto);
+
         }
+        con.close();
+        return fotos;
     }
-    
+ 
 }
 

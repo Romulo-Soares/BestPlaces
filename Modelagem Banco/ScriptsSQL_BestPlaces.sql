@@ -10,7 +10,7 @@ CREATE TABLE Usuario(
 	CONSTRAINT UsuarioPK PRIMARY KEY(Email)
 );
 
-CREATE TABLE Lugar(
+CREATE TABLE Local(
 	ID SERIAL,
 	Usuario VARCHAR(100),		
 	Nome VARCHAR(100) NOT NULL,	
@@ -19,8 +19,8 @@ CREATE TABLE Lugar(
 	Descricao TEXT NOT NULL,
 	Estado VARCHAR(100) NOT NULL,
 	Tipo VARCHAR(100) NOT NULL,
-	CONSTRAINT LugarPK PRIMARY KEY(ID),
-	CONSTRAINT LugarFK FOREIGN KEY(Usuario) 
+	CONSTRAINT LocalPK PRIMARY KEY(ID),
+	CONSTRAINT LocalFK FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
@@ -29,7 +29,7 @@ CREATE TABLE Lugar(
 CREATE TABLE Evento(
 	ID SERIAL,
 	Usuario VARCHAR(100) NOT NULL,	
-	ID_Lugar INT NOT NULL,
+	ID_Local INT NOT NULL,
 	Nome VARCHAR(100) NOT NULL,
 	Data VARCHAR(10) NOT NULL,	
 	Hora VARCHAR(15) NOT NULL,	
@@ -40,40 +40,40 @@ CREATE TABLE Evento(
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,
-	CONSTRAINT EventoFK2 FOREIGN KEY(ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	CONSTRAINT EventoFK2 FOREIGN KEY(ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Avaliacao_Lugar(
-	ID_Lugar INT,	
+CREATE TABLE Avaliacao_Local(
+	ID_Local INT,	
 	Usuario VARCHAR(100),
-	Nota_Lugar INT NOT NULL,
-	CONSTRAINT Avaliacao_LugarPK PRIMARY KEY(ID_Lugar, Usuario),
-	CONSTRAINT Avaliacao_LugarFK1 FOREIGN KEY (ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	Nota_Local INT NOT NULL,
+	CONSTRAINT Avaliacao_LocalPK PRIMARY KEY(ID_Local, Usuario),
+	CONSTRAINT Avaliacao_LocalFK1 FOREIGN KEY (ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,
-	CONSTRAINT Avaliacao_LugarFK2 FOREIGN KEY (Usuario) 
+	CONSTRAINT Avaliacao_LocalFK2 FOREIGN KEY (Usuario) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Presenca_Lugar(	
-	ID_Lugar INT,
+CREATE TABLE Presenca_Local(	
+	ID_Local INT,
 	Usuario VARCHAR(100),
 	Comentario TEXT NOT NULL,	
 	Status VARCHAR(50) NOT NULL,
 	Data VARCHAR(10),
-	CONSTRAINT Presenca_LugarPK PRIMARY KEY(ID_Lugar, Usuario, Data),
-	CONSTRAINT Presenca_LugarFK1 FOREIGN KEY(Usuario) 
+	CONSTRAINT Presenca_LocalPK PRIMARY KEY(ID_Local, Usuario, Data),
+	CONSTRAINT Presenca_LocalFK1 FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,	
-	CONSTRAINT Presenca_LugarFK2 FOREIGN KEY(ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	CONSTRAINT Presenca_LocalFK2 FOREIGN KEY(ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
 );
@@ -96,9 +96,10 @@ CREATE TABLE Presenca_Evento(
 );
 
 CREATE TABLE Divulgacao_Evento (
+	ID SERIAL,
 	ID_Evento INT,
 	Usuario VARCHAR(100),
-	CONSTRAINT Divulgacao_EventoPK PRIMARY KEY(ID_Evento, Usuario),
+	CONSTRAINT Divulgacao_EventoPK PRIMARY KEY(ID),
 	CONSTRAINT Divulgacao_EventoK1 FOREIGN KEY(Usuario) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
@@ -126,30 +127,33 @@ CREATE TABLE Interacao(
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Fotos_Lugar(
-	ID_Lugar INT,	
+CREATE TABLE Fotos_Local(
+	ID SERIAL,
+	ID_Local INT,	
 	Foto TEXT,
-	CONSTRAINT Fotos_LugarPK PRIMARY KEY(ID_Lugar, Foto),	
-	CONSTRAINT Fotos_LugarFK FOREIGN KEY(ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	CONSTRAINT Fotos_LocalPK PRIMARY KEY(ID),	
+	CONSTRAINT Fotos_LocalFK FOREIGN KEY(ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Fotos_Presenca_Lugar(	
-	ID_Lugar INT,
+CREATE TABLE Fotos_Presenca_Local(
+	ID SERIAL,
+	ID_Local INT,
 	Foto TEXT,
-	CONSTRAINT Fotos_Presenca_LugarPK PRIMARY KEY(ID_Lugar, Foto),	
-	CONSTRAINT Fotos_Presenca_LugarFK FOREIGN KEY (ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	CONSTRAINT Fotos_Presenca_LocalPK PRIMARY KEY(ID),	
+	CONSTRAINT Fotos_Presenca_LocalFK FOREIGN KEY (ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE
 );
 
 CREATE TABLE Fotos_Presenca_Evento(	
+	ID SERIAL,
 	ID_Evento INT,
 	Foto TEXT,
-	CONSTRAINT Fotos_Presenca_EventoPK PRIMARY KEY(ID_Evento, Foto),	
+	CONSTRAINT Fotos_Presenca_EventoPK PRIMARY KEY(ID),	
 	CONSTRAINT Fotos_Presenca_EventoFK FOREIGN KEY (ID_Evento) 
 		REFERENCES Evento(ID) 
 			ON UPDATE CASCADE 
@@ -157,11 +161,11 @@ CREATE TABLE Fotos_Presenca_Evento(
 );
 
 CREATE TABLE Mensagem(
-	Id SERIAL,	
+	ID SERIAL,	
 	Remetente VARCHAR(100),
 	Destinatario VARCHAR(100),
 	Mensagem TEXT NOT NULL,
-	CONSTRAINT MensagemPK PRIMARY KEY(Id, Remetente, Destinatario),	
+	CONSTRAINT MensagemPK PRIMARY KEY(ID),	
 	CONSTRAINT MensagemFK1 FOREIGN KEY(Remetente) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
@@ -172,22 +176,22 @@ CREATE TABLE Mensagem(
 			ON DELETE CASCADE
 );
 
-CREATE TABLE Recomendacao_Lugar(
+CREATE TABLE Recomendacao_Local(
+	ID SERIAL,
 	Usuario_Recomendador VARCHAR(100),
 	Usuario_Destino VARCHAR(100),
-	ID_Lugar INT NOT NULL,
-	CONSTRAINT Recomendacao_LugarPK PRIMARY KEY(
-		Usuario_Recomendador, Usuario_Destino),
-	CONSTRAINT Recomendacao_LugarFK1 FOREIGN KEY(Usuario_Recomendador) 
+	ID_Local INT NOT NULL,
+	CONSTRAINT Recomendacao_LocalPK PRIMARY KEY(ID),
+	CONSTRAINT Recomendacao_LocalFK1 FOREIGN KEY(Usuario_Recomendador) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,
-	CONSTRAINT Recomendacao_LugarFK2 FOREIGN KEY(Usuario_Destino) 
+	CONSTRAINT Recomendacao_LocalFK2 FOREIGN KEY(Usuario_Destino) 
 		REFERENCES Usuario(Email) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE,
-	CONSTRAINT Recomendacao_LugarFK3 FOREIGN KEY(ID_Lugar) 
-		REFERENCES Lugar(ID) 
+	CONSTRAINT Recomendacao_LocalFK3 FOREIGN KEY(ID_Local) 
+		REFERENCES Local(ID) 
 			ON UPDATE CASCADE 
 			ON DELETE CASCADE	
 );

@@ -680,7 +680,7 @@
       <AutoRelacoes AutoRelacionado="0"/>
       <Especializacoes ehEsp="0"/>
     </Entidade>
-    <Entidade nome="LUGAR" id="3">
+    <Entidade nome="LOCAL" id="3">
       <Left Valor="690"/>
       <Top Valor="146"/>
       <Width Valor="96"/>
@@ -1080,8 +1080,8 @@
           <MostraCardinalidade Valor="-1" Card_id="475"/>
           <Cardinalidades Cardinalidade="1">
             <Cardinalidade nome="" id="475">
-              <Left Valor="217"/>
-              <Top Valor="211"/>
+              <Left Valor="235"/>
+              <Top Valor="213"/>
               <Width Valor="40"/>
               <Height Valor="20"/>
               <Fonte default="-1"/>

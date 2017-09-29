@@ -148,4 +148,30 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>listaLocais</name>
+        <description>Lista locais do usuario logado</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaLocais</tag-class>
+        <attribute>
+            <name>usuarioLogado</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>listaFotosLocal</name>
+        <description>Lista fotos do local</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaFotosLocal</tag-class>
+        <attribute>
+            <name>idFoto</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>

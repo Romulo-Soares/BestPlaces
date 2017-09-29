@@ -1,23 +1,24 @@
 
 package com.ifpb.BestPlaces.Interfaces;
 
-import com.ifpb.BestPlaces.Entidades.Lugar;
+import com.ifpb.BestPlaces.Entidades.Local;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface ILugarDAO {
+public interface ILocalDAO {
     
-    public Lugar read(int id) 
+    public Local read(String usuario, String nome) 
             throws SQLException, ClassNotFoundException;
-    public List<Lugar> list() 
+    public List<Local> list() 
             throws SQLException, ClassNotFoundException;
-    public boolean insert(Lugar l) 
+    public boolean insert(Local l) 
             throws SQLException, ClassNotFoundException;
     public boolean delete(int id) 
             throws SQLException, ClassNotFoundException;
-    public boolean update(int id, Lugar l) 
+    public boolean update(int id, Local l) 
             throws SQLException, ClassNotFoundException;
-    public boolean lugarExists(int id) 
+    public boolean localExists(String usuario, String nome) 
             throws ClassNotFoundException, SQLException;
-    
+    public List<Local> listarLocais(String usuarioLogado) 
+            throws ClassNotFoundException, SQLException;
 }
