@@ -9,6 +9,8 @@ public interface ILocalDAO {
     
     public Local read(String usuario, String nome) 
             throws SQLException, ClassNotFoundException;
+    public List<Local> readLocalByName(String nome) 
+            throws SQLException, ClassNotFoundException;
     public List<Local> list() 
             throws SQLException, ClassNotFoundException;
     public boolean insert(Local l) 

@@ -27,6 +27,7 @@ public class LocalDAO implements ILocalDAO{
 
         if (rs.next()) { 
             Local local = new Local();
+            local.setId(rs.getInt("id"));
             local.setUsuario(rs.getString("usuario"));
             local.setNome(rs.getString("nome"));
             local.setRua(rs.getString("rua"));
@@ -43,6 +44,35 @@ public class LocalDAO implements ILocalDAO{
             return null;
         }
 
+    }
+    
+    @Override
+    public List<Local> readLocalByName(String nome) throws SQLException, ClassNotFoundException {
+
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM local WHERE nome ILIKE '"+nome+"%'");
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        List<Local> locais = new ArrayList<>();
+
+        while (rs.next()) { 
+            Local local = new Local();
+            local.setId(rs.getInt("id"));
+            local.setUsuario(rs.getString("usuario"));
+            local.setNome(rs.getString("nome"));
+            local.setRua(rs.getString("rua"));
+            local.setCidade(rs.getString("cidade"));
+            local.setDescricao(rs.getString("descricao"));
+            local.setEstado(rs.getString("estado"));
+            local.setTipo(rs.getString("tipo"));
+            
+            locais.add(local);
+            
+        } 
+            con.close();
+            return locais;
     }
     
     @Override

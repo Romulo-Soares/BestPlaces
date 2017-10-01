@@ -174,4 +174,49 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>findLocalByName</name>
+        <description>Busca todos os locais por nome</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.FindLocalByName</tag-class>
+        <attribute>
+            <name>nome</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>findLocalProfile</name>
+        <description>Busca os dados de perfil do local</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.FindLocalProfile</tag-class>
+        <attribute>
+            <name>email</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>nome</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>retornaFotoLocal</name>
+        <description>Retorna a foto do local</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.RetornaFotoLocal</tag-class>
+        <attribute>
+            <name>idLocal</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>

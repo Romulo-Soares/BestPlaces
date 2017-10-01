@@ -23,6 +23,8 @@
 
                 <div class="col-md-2 sidenav pull-right" id="divDadosLo">
                     <a name="cadLocal" href="cadastroLocal.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-list-alt"></span> Cadastrar Local</a>
+                    <a name="pesLocal" href="pesquisarLocal.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-search"></span> Pesquisar Local</a>
+                    <a name="recomendacao" href="recomendacoes.jsp" class="btn btn-danger btn-md btn-block" role="button"><span id="btPerfil" class="glyphicon glyphicon-share"></span> Recomendações</a>
                 </div>
                 <div class="col-sm-8 sidenav text-center">
                     <ct:listaLocais usuarioLogado="${sessionScope.email}"/>
@@ -32,7 +34,15 @@
                             <c:forEach var="locais" items="${locais}" >
 
                                 <div class="col-sm-5" id="divLocal">
-                                    <img class="img-thumbnail pull-left" src="Imagens\erro.png" alt="Local" id="fotoLocal">
+                                    <ct:retornaFotoLocal idLocal="${locais.id}"/>
+                                    <c:choose>
+                                        <c:when test="${not empty fotoLocal}">
+                                            <img class="img-thumbnail pull-left" src="${fotoLocal.foto}" alt="Local" id="fotoLocal"> 
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img class="img-thumbnail pull-left" src="" alt="Add uma Foto" id="fotoLocal">  
+                                        </c:otherwise>        
+                                    </c:choose>
                                     <div class="col-sm-5" id="divDados">  
                                         <h5>${locais.nome}</h5>
                                         <h5>${locais.rua}</h5>
@@ -112,16 +122,11 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <button type="button" onclick="setaDadosModal('${locais.id}', '${locais.nome}')" name="addFotosLugar" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#modalFotos" role="button"><span class="glyphicon glyphicon-picture"></span></button>
+                                            <button type="button" name="addFotosLugar" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#${locais.id}" role="button"><span class="glyphicon glyphicon-picture"></span></button>
 
-                                            <script type="text/javascript">
-                                                function setaDadosModal(id, nome) {
-                                                    document.getElementById('id').value = id;
-                                                    document.getElementById('nome').value = nome;
-                                                }
-                                            </script>
 
-                                            <div class="modal fade" id="modalFotos" role="dialog">
+
+                                            <div class="modal fade" id="${locais.id}" role="dialog">
                                                 <div class="modal-dialog modal-md">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -129,15 +134,13 @@
                                                             <h4 class="modal-title">Fotos Local</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="FrontControl" method="post" enctype="multipart/form-data">
+                                                            <form action="FrontControl?foto=${locais.nome}&id=${locais.id}" method="post" enctype="multipart/form-data">
                                                                 <div class="input-group input-group"> 
                                                                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
                                                                     <input data-toggle="tooltip" name="fotoLocal" title="Escolha a foto do local" type="file" class="form-control" aria-describedby="basic-addon1" required>
                                                                 </div>
 
                                                                 <div class="form-group" id="divBtLogin">
-                                                                    <input type="hidden" name="id" id="id"> 
-                                                                    <input type="hidden" name="nome" id="nome"> 
                                                                     <input type="hidden" name="identificador" value="AdicionaFotoLocal"> 
                                                                     <input type="submit" name="adicionar" class="btn btn-danger btn-md" role="button" value="Adicionar">
                                                                 </div>
@@ -165,7 +168,10 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <a name="excluirLocal" href="#" class="btn btn-danger btn-md btn-block" role="button"><span class="glyphicon glyphicon-trash"></span></a>   
+                                            <form method="post" action="FrontControl?idLocal=${locais.id}&localNome=${locais.nome}">
+                                                <input type="hidden" name="identificador" value="ExcluiLocal">
+                                                <input type="submit" name="excluirLocal" class="btn btn-danger btn-md btn-block" value="Excluir">
+                                            </form>
                                         </div>   
                                     </div>
                                 </div>

@@ -52,4 +52,15 @@ public interface IFileManager {
         return (new File(pathName)).delete();
     }
     
+    default public boolean deleteFolderWithFile(String pathName){
+        File folder = new File(pathName);
+        if (folder.isDirectory()) {
+            File[] sun = folder.listFiles();
+            for (File toDelete : sun) {
+                toDelete.delete();
+            }
+        }
+        return folder.delete();
+    }
+    
 }
