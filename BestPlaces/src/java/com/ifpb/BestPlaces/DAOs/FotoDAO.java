@@ -98,13 +98,13 @@ public class FotoDAO implements IFotoDAO {
     }
 
     @Override
-    public int interatorFotos_Local()
+    public int interatorFotos_Local(String tabela)
             throws SQLException, ClassNotFoundException {
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
                 "select count(*)+1 "
-                + "from fotos_local");
+                + "from " + tabela);
 
         ResultSet rs = stmt.executeQuery();
 

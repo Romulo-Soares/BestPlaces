@@ -22,7 +22,7 @@ public class AdicionaFotoLocalController implements ICommand, IFileManager{
        f.setId(id);
        
        String foto = uploadFile("fotosLocal/" + req.getParameter("foto"), req, 
-       req.getPart("fotoLocal"), req.getParameter("foto")+fotoDAO.interatorFotos_Local());
+       req.getPart("fotoLocal"), req.getParameter("foto")+fotoDAO.interatorFotos_Local("fotos_local"));
        f.setFoto(foto);
        
        if(fotoDAO.insert(f, "fotos_local")){

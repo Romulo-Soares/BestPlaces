@@ -13,9 +13,34 @@
         <div class="container-fluid">
             <div class="row contant">
                 <%@ include file="menu.jsp"%>
+                <ct:listaRecomendacoes usuario="${sessionScope.email}"/>
                 <div class="col-sm-6 sidenav text-center col-lg-push-1" id="divCentral">
-                    <h1>Feed</h1>
+
+
+                    <div class="form-group">
+                        <div id="divResultado">
+                            <c:choose>
+                                <c:when test="${not empty recomendacoes}">
+                                    <c:forEach var="recomendacoes" items="${recomendacoes}" >
+                                        <ct:retornaFotoLocal idLocal="${recomendacoes.id}"/>
+                                        <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+                                        <div id="divPes" class="form-group pull-left">
+                                            <h4>${recomendacoes.nome}</h4>
+                                            <h6 id="hDados">Rua: ${recomendacoes.rua}</h6>
+                                            <h6 id="hDados">Cidade: ${recomendacoes.cidade}</h6>
+                                            <h6 id="hDados">Descricao: ${recomendacoes.descricao}</h6>
+                                            <h6 id="hDados">Estado: ${recomendacoes.estado}</h6>
+                                            <h6 id="hDados">Tipo: ${recomendacoes.tipo}</h6>
+                                            
+                                        </div>
+                                    </c:forEach>
+                                </c:when>
+                            </c:choose>
+                        </div>
+                    </div>
                 </div>
+
+
 
                 <ct:dezMaisConversadores usuarioInteragido="${sessionScope.email}"/>
                 <c:choose>
@@ -36,7 +61,9 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+
             </div>
+
         </div>
 
     </body>

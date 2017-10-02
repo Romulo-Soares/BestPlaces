@@ -219,4 +219,17 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>listaRecomendacoes</name>
+        <description>Retorna as recomendacoes de um usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaRecomendacoes</tag-class>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>
