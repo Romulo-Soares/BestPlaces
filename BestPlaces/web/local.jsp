@@ -52,79 +52,9 @@
                                         <h5>${locais.tipo}</h5>
                                     </div>
                                     <div class="col-sm-12 form-group">
-                                        <div class="col-md-4">
-                                            <button type="button" name="edLocal" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#modalEditar" role="button"><span class="glyphicon glyphicon-pencil"></span></button>
 
-                                            <div class="modal fade" id="modalEditar" role="dialog">
-                                                <div class="modal-dialog modal-md">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Editar Local</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="FrontControl" method="post" enctype="multipart/form-data">
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                                                                        <input type="text" name="nome" class="form-control" placeholder="Nome" aria-describedby="basic-addon1" value="${locais.nome}" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-road"></i></span>
-                                                                        <input type="text" name="rua" class="form-control" placeholder="Rua" aria-describedby="basic-addon1" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-home"></i></span>
-                                                                        <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-describedby="basic-addon1" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-list-alt"></i></span>
-                                                                        <input type="text" name="descricao" class="form-control" placeholder="Descrição" aria-describedby="basic-addon1" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-flag"></i></span>
-                                                                        <input type="text" name="estado" class="form-control" placeholder="Estado" aria-describedby="basic-addon1" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="input-group input-group"> 
-                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
-                                                                        <input type="text" name="tipo" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group" id="divBtLogin">
-                                                                    <input type="hidden" name="identificador" value="CadastraLocal"> 
-                                                                    <input type="submit" name="adicionar" class="btn btn-danger btn-md" role="button" value="Atualizar">
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <button type="button" name="addFotosLugar" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#${locais.id}" role="button"><span class="glyphicon glyphicon-picture"></span></button>
-
-
 
                                             <div class="modal fade" id="${locais.id}" role="dialog">
                                                 <div class="modal-dialog modal-md">
@@ -167,7 +97,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <form method="post" action="FrontControl?idLocal=${locais.id}&localNome=${locais.nome}">
                                                 <input type="hidden" name="identificador" value="ExcluiLocal">
                                                 <input type="submit" name="excluirLocal" class="btn btn-danger btn-md btn-block" value="Excluir">

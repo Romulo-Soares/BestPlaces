@@ -232,4 +232,49 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>listaEventos</name>
+        <description>Lista eventos do usuario logado</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventos</tag-class>
+        <attribute>
+            <name>usuarioLogado</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>findEventoByName</name>
+        <description>Busca todos os eventos por nome</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.FindEventoByName</tag-class>
+        <attribute>
+            <name>nome</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>findEventoProfile</name>
+        <description>Busca os dados de perfil do evento</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.FindEventoProfile</tag-class>
+        <attribute>
+            <name>email</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>nome</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>
