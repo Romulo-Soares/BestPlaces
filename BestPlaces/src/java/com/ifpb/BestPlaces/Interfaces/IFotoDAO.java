@@ -20,7 +20,10 @@ public interface IFotoDAO {
 
     public int interatorFotos_Local(String tabela)
             throws SQLException, ClassNotFoundException;
-    
+
     public Foto retornaFotoLocal(int idLocal)
+            throws SQLException, ClassNotFoundException;
+
+    public boolean insertFotosPresencaEvento(Foto f, String tabela)
             throws SQLException, ClassNotFoundException;
 }

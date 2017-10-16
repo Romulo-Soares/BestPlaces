@@ -8,35 +8,26 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class FindEventoProfile extends SimpleTagSupport {
 
-    private String email;
-    private String nome;
+    private int idEvento;
 
     @Override
     public void doTag() {
 
         EventoDAO eventoDAO = new EventoDAO();
         try {
-            getJspContext().setAttribute("evento", eventoDAO.read(email, nome));
+            getJspContext().setAttribute("evento", eventoDAO.read(idEvento));
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(FindEventoProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public String getEmail() {
-        return email;
+    public int getIdEvento() {
+        return idEvento;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
     }
 
 }

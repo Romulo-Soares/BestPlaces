@@ -9,7 +9,7 @@
         <%@ include file="navbar.jsp"%>
     </head>
     <body>
-        <ct:findEventoProfile email="${param.email}" nome="${param.nome}"/>
+        <ct:findEventoProfile idEvento="${param.idEvento}"/>
 
         <div class="container" id="divCad">
             <div class="row" id="divContMenTit">
@@ -26,18 +26,21 @@
                 </c:if>
 
                 <div class="panel-heading text-center">
-
                     <div id="divPerfil">
-
-
                         <div class="form-group">
 
-                            <c:if test="${not empty param.isRecommended}">
-                                O Usuario já foi recomendado para este Evento
-                            </c:if>
-
-                            <form action="FrontControl?identificador=RecomendaLocal&id_local=${local.id}&nomeLocal=${param.nome}" method="post" name="recomendacaoLocal">
-                                <input type="submit" name="recomendar" class="btn btn-danger btn-md btn-block" role="button" value="Divulgar">
+                            <form action="FrontControl" method="post" name="divulgarEvento">
+                                <input type="hidden" name="identificador" value="DivulgaEvento">
+                                <input type="hidden" name="idEvento" value="${evento.id}">
+                                <c:choose>
+                                    <c:when test="${empty param.divulgado || param.divulgado eq false}">
+                                        <input type="submit" name="divulgar" class="btn btn-danger btn-md btn-block" role="button" value="Divulgar">
+                                    </c:when>
+                                    <c:otherwise>
+                                        Evento Divulgado
+                                        <input type="submit" name="desfazerDivulgacao" class="btn btn-danger btn-md btn-block" role="button" value="Desfazer Divulgacao">
+                                    </c:otherwise>
+                                </c:choose>
                             </form>
 
                         </div>
@@ -46,18 +49,18 @@
                             O Evento já está marcado para esta data
                         </c:if>          
 
-                        <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#modalMarc" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
+                        <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#${evento.id}" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
 
-                        <div class="modal fade" id="modalMarc" role="dialog">
+                        <div class="modal fade" id="${evento.id}" role="dialog">
                             <div class="modal-dialog">
-
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Marcar Presença</h4>
                                     </div>
-                                    <form action="FrontControl?identificador=PresencaLocal&id_local=${local.id}&nomeLocal=${param.nome}" method="post" name="marcar presenca" enctype="multipart/form-data">
+                                    
+                                    <form action="FrontControl" method="post" name="marcar presenca" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             <div class="form-group">
@@ -84,6 +87,9 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <input type="hidden" name="identificador" value="PresencaEvento">
+                                            <input type="hidden" name="idEvento" value="${evento.id}">
+                                            <input type="hidden" name="nome" value="${evento.nome}">
                                             <button type="submit" class="btn btn-danger">Marcar Presença</button>
                                         </div>
                                     </form>

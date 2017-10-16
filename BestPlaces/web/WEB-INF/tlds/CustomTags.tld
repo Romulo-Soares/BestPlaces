@@ -264,13 +264,20 @@
         <body-content>empty</body-content>
         <tag-class>com.ifpb.BestPlaces.Tags.FindEventoProfile</tag-class>
         <attribute>
-            <name>email</name>
-            <type>String</type>
+            <name>idEvento</name>
+            <type>int</type>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
+    </tag>
+    
+    <tag>
+        <name>listaEventosDivulgados</name>
+        <description>Lista eventos divulgados de amigos</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventosDivulgados</tag-class>
         <attribute>
-            <name>nome</name>
+            <name>usuario</name>
             <type>String</type>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>

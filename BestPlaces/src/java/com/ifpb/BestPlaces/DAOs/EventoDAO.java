@@ -14,14 +14,13 @@ import java.util.List;
 public class EventoDAO implements IEventoDAO{
     
     @Override
-    public Evento read(String usuario, String nome) throws SQLException, ClassNotFoundException {
+    public Evento read(int idEvento) throws SQLException, ClassNotFoundException {
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM evento WHERE usuario = ? AND nome = ?");
+                "SELECT * FROM evento WHERE id = ?");
 
-        stmt.setString(1, usuario);
-        stmt.setString(2, nome);
+        stmt.setInt(1, idEvento);
         
         ResultSet rs = stmt.executeQuery();
 

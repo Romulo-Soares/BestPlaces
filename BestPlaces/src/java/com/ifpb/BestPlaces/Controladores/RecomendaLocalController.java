@@ -1,9 +1,6 @@
 package com.ifpb.BestPlaces.Controladores;
 
-import com.ifpb.BestPlaces.DAOs.MensagemDAO;
 import com.ifpb.BestPlaces.DAOs.RecomendacaoLocalDAO;
-import com.ifpb.BestPlaces.Entidades.AvaliacaoLocal;
-import com.ifpb.BestPlaces.Entidades.Mensagem;
 import com.ifpb.BestPlaces.Entidades.RecomendacaoLocal;
 import com.ifpb.BestPlaces.Interfaces.ICommand;
 import java.io.IOException;

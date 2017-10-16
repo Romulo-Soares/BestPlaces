@@ -13,33 +13,53 @@
         <div class="container-fluid">
             <div class="row contant">
                 <%@ include file="menu.jsp"%>
-                <ct:listaRecomendacoes usuario="${sessionScope.email}"/>
+
                 <div class="col-sm-6 sidenav text-center col-lg-push-1" id="divCentral">
 
-                    <c:choose>
-                        <c:when test="${not empty recomendacoes}">
-                            <c:forEach var="recomendacoes" items="${recomendacoes}" >
-                                <ct:retornaFotoLocal idLocal="${recomendacoes.id}"/>
-                                <div class="" id="divResultadoFeed">
-                                    <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
-                                    <div id="divPes" class="form-group pull-left">
-                                        <h4>${recomendacoes.nome}</h4>
-                                        <h6 id="hDados">Rua: ${recomendacoes.rua}</h6>
-                                        <h6 id="hDados">Cidade: ${recomendacoes.cidade}</h6>
-                                        <h6 id="hDados">Descricao: ${recomendacoes.descricao}</h6>
-                                        <h6 id="hDados">Estado: ${recomendacoes.estado}</h6>
-                                        <h6 id="hDados">Tipo: ${recomendacoes.tipo}</h6>
+                    <ct:listaRecomendacoes usuario="${sessionScope.email}"/>
+                    
+                    <c:if test="${empty recomendacoes && empty eventosDivulgados}">
+                        <div class="col-md-12 text-center" id="divResultado">
+                            <h4>Suas recomendações e divulgações aparecerão Aqui</h4>
+                        </div>
+                    </c:if>
+                    
+                    <c:if test="${not empty recomendacoes}">
+                        <c:forEach var="recomendacoes" items="${recomendacoes}" >
+                            <ct:retornaFotoLocal idLocal="${recomendacoes.id}"/>
+                            <div class="" id="divResultadoFeed">
+                                <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+                                <div id="divPes" class="form-group pull-left">
+                                    <h4>${recomendacoes.nome}</h4>
+                                    <h6 id="hDados">Rua: ${recomendacoes.rua}</h6>
+                                    <h6 id="hDados">Cidade: ${recomendacoes.cidade}</h6>
+                                    <h6 id="hDados">Descricao: ${recomendacoes.descricao}</h6>
+                                    <h6 id="hDados">Estado: ${recomendacoes.estado}</h6>
+                                    <h6 id="hDados">Tipo: ${recomendacoes.tipo}</h6>
 
-                                    </div>
                                 </div>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="col-md-12 text-center" id="divResultado">
-                                <h4>Suas recomendações e divulgações aparecerão Aqui</h4>
                             </div>
-                        </c:otherwise>
-                    </c:choose>
+                        </c:forEach>
+                    </c:if>
+
+                    <ct:listaEventosDivulgados usuario="${sessionScope.email}"/>
+
+                    <c:if test="${not empty eventosDivulgados}">
+                        <c:forEach var="ed" items="${eventosDivulgados}" >
+                            <ct:retornaFotoLocal idLocal="${ed.idLocal}"/>
+                            <div class="" id="divResultadoFeed">
+                                <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+                                <div id="divPes" class="form-group pull-left">
+                                    <h4>${ed.nome}</h4>
+                                    <h6 id="hDados">Divulgado por: ${ed.usuario}</h6>
+                                    <h6 id="hDados">Cidade: ${ed.data}</h6>
+                                    <h6 id="hDados">Descricao: ${ed.hora}</h6>
+                                    <h6 id="hDados">Estado: ${ed.local}</h6>
+                                    <h6 id="hDados">Tipo: ${ed.descricao}</h6>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
 
                 </div>
 

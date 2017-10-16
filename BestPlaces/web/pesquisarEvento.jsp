@@ -56,8 +56,7 @@
                                         <h6 id="hDados">Descrição: ${eventos.descricao}</h6>
                                     </div>
                                     <div id="divPesbt" class="form-group">
-                                        <input name="email" type="hidden" value="${eventos.usuario}">
-                                        <input name="nome" type="hidden" value="${eventos.nome}">
+                                        <input name="idEvento" type="hidden" value="${eventos.id}">
                                         <input type="submit" class="btn btn-danger btn-md btn-block" id="btPes" role="button" value="Visualizar Perfil Evento"> 
                                     </div>
                                 </div>  

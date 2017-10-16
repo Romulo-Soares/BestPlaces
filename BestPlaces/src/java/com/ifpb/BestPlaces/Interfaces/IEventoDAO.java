@@ -2,13 +2,12 @@
 package com.ifpb.BestPlaces.Interfaces;
 
 import com.ifpb.BestPlaces.Entidades.Evento;
-import com.ifpb.BestPlaces.Entidades.Local;
 import java.sql.SQLException;
 import java.util.List;
 
 public interface IEventoDAO {
     
-    public Evento read(String usuario, String nome) 
+    public Evento read(int idEvento) 
             throws SQLException, ClassNotFoundException;
     public List<Evento> readEventoByName(String nome) 
             throws SQLException, ClassNotFoundException;
