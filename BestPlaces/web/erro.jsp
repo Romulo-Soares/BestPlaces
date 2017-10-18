@@ -23,10 +23,10 @@
                 <img class="img-thumbnail" src="Imagens\erro.png" alt="Erro" id="imgErro">
 
                 <div class="alert alert-danger" role="alert" id="divErro">
-                    <h4>Ocorreu um erro Inesperado :(</h4>
+                    <h4>${msg} :(</h4>
                     <h6>Sempre verifique se seus dados estão corretos!</h6>
 
-                    <a href="index.jsp" class="alert-link">Vamos tentar novamente</a>
+                    <a href="${back}?email=${email}&nome=${nome}" class="alert-link">Vamos tentar novamente</a>
                 </div>
             </center>
         </div>

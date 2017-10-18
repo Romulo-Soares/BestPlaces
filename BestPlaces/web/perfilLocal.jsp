@@ -7,9 +7,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil Local</title>
         <%@ include file="navbar.jsp"%>
-    </head>
-    <body>
         <ct:findLocalProfile email="${param.email}" nome="${param.nome}"/>
+        <ct:countStar idLocal="${local.id}"/>
+    </head>
+    <body onload="setaDadosStar('${valorAvaliacao}')">
 
         <div class="container" id="divCad">
             <div class="row" id="divContMenTit">
@@ -63,11 +64,11 @@
                                 </div>
                             </div>
                         </div>
-                                        
+
                         <c:if test="${not empty param.isMarked}">
                             O Local já está marcado para esta data
                         </c:if>          
-                            
+
                         <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#modalMarc" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
 
                         <div class="modal fade" id="modalMarc" role="dialog">
@@ -125,6 +126,7 @@
                 <div class="panel-body text-center">Tipo: ${local.tipo}</div>
                 <div class="panel-body text-center">Deixe sua avaliação abaixo:</div>
                 <div class="estrelas panel-body text-center">
+
                     <form action="FrontControl" method="post">  
                         <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
                         <label for="cm_star-1"><i class="fa"></i></label>
@@ -139,8 +141,27 @@
                         <input type="radio" id="cm_star-5" name="fb" value="5"/>
                         <input type="hidden" name="idDoLocal" value="${local.id}"> 
                         <input type="hidden" name="identificador" value="AvaliacaoLocal"> 
-                        <input type="submit" class="btn-sm btn-danger" role="button" value="Avaliar">
+                        <input type="hidden" name="email" value="${local.usuario}"> 
+                        <input type="hidden" name="nome" value="${local.nome}"> 
+                        
+                        <c:choose>
+                            <c:when test="${valorAvaliacao != 0}">
+                                <button type="submit" class="btn-sm btn-danger" name="reavaliar" role="button">Reavaliar</button>
+                            </c:when>
+                            <c:otherwise>
+                                <button type="submit" class="btn-sm btn-danger" name="avaliar" role="button">Avaliar</button>
+                            </c:otherwise>
+                        </c:choose>
+                        
                     </form>    
+
+                    <script type="text/javascript">
+                        function setaDadosStar(valorAvaliacao) {
+                            var radio = document.getElementById("cm_star-" + valorAvaliacao);
+                            radio.checked = "true";
+                        }                       
+                    </script>
+                    
                 </div>
             </div>
         </div>

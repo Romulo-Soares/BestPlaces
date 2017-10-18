@@ -28,12 +28,18 @@ public class RecomendaLocalController implements ICommand {
 
         if (!rlDAO.isRecommended(rl)) {
             if (rlDAO.recomendaLocal(rl)) {
-                res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador + "&nome=" + nomeLocal);
+                req.setAttribute("email", usuario_recomendador);
+                req.setAttribute("nome", nomeLocal);
+                req.getRequestDispatcher("perfilLocal.jsp").forward(req, res);
             } else {
-                res.sendRedirect("erro.jsp");
+                req.setAttribute("email", usuario_recomendador);
+                req.setAttribute("nome", nomeLocal);
+                req.setAttribute("back", "perfilLocal.jsp");
+                req.setAttribute("msg", "O Usuario não é amigo do recomendado!");
+                req.getRequestDispatcher("erro.jsp").forward(req, res);
             }
         } else {
-            res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador 
+            res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador
                     + "&nome=" + nomeLocal + "&isRecommended=true");
         }
 

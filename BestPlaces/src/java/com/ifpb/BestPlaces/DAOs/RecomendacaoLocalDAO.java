@@ -15,21 +15,22 @@ public class RecomendacaoLocalDAO implements IRecomendacaoLocalDAO {
 
     @Override
     public boolean recomendaLocal(RecomendacaoLocal rl) throws SQLException, ClassNotFoundException {
+        if (new InteracaoUsuarioDAO().isFriend(rl.getUsuario_recomendador(), rl.getUsuario_destino())) {
+            Connection con = ConFactory.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                    "INSERT INTO recomendacao_local (usuario_recomendador, usuario_destino, id_local) "
+                    + "VALUES (?,?,?)");
 
-        Connection con = ConFactory.getConnection();
-        PreparedStatement stmt = con.prepareStatement(
-                "INSERT INTO recomendacao_local (usuario_recomendador, usuario_destino, id_local) "
-                + "VALUES (?,?,?)");
+            stmt.setString(1, rl.getUsuario_recomendador());
+            stmt.setString(2, rl.getUsuario_destino());
+            stmt.setInt(3, rl.getId_local());
 
-        stmt.setString(1, rl.getUsuario_recomendador());
-        stmt.setString(2, rl.getUsuario_destino());
-        stmt.setInt(3, rl.getId_local());
+            boolean retorno = stmt.executeUpdate() > 0;
 
-        boolean retorno = stmt.executeUpdate() > 0;
-
-        con.close();
-        return retorno;
-
+            con.close();
+            return retorno;
+        }
+        return false;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.ifpb.BestPlaces.Testes;
 
+import com.ifpb.BestPlaces.DAOs.AvaliacaoLocalDAO;
 import com.ifpb.BestPlaces.DAOs.DivulgaEventoDAO;
 import com.ifpb.BestPlaces.DAOs.InteracaoUsuarioDAO;
 import com.ifpb.BestPlaces.DAOs.MensagemDAO;
@@ -33,16 +34,15 @@ public class AppTest {
 //        MensagemDAO msgDAO = new MensagemDAO();
 //        
 //        System.out.println(msgDAO.findMessages(remetente, destinatario));
-
-
 //        DivulgaEventoDAO ged = new DivulgaEventoDAO();
 //        System.out.println(ged.eventosDivulgados("renan@gmail.com"));
-
-
 //        RecomendacaoLocalDAO rlDAO = new RecomendacaoLocalDAO();
 //        System.out.println(rlDAO.listaLocaisRecomendados("renan@gmail.com"));
-    
-    
+        
+        
+//        AvaliacaoLocalDAO ald = new AvaliacaoLocalDAO();
+//        System.out.println(ald.update(13, 4));
+
     }
-    
+
 }

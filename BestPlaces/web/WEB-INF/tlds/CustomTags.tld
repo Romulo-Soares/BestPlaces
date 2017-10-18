@@ -284,4 +284,17 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>countStar</name>
+        <description>Conta as estrelas de um evento</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.CountStar</tag-class>
+        <attribute>
+            <name>idLocal</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>
