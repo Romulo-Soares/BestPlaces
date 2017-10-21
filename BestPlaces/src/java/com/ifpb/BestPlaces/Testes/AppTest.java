@@ -41,7 +41,7 @@ public class AppTest {
         
         
 //        AvaliacaoLocalDAO ald = new AvaliacaoLocalDAO();
-//        System.out.println(ald.update(13, 4));
+//        System.out.println((int)ald.countStar(17)+1);
 
     }
 

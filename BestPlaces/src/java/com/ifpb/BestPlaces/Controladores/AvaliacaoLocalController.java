@@ -25,18 +25,10 @@ public class AvaliacaoLocalController implements ICommand {
 
         AvaliacaoLocalDAO avaliacaoLocalDao = new AvaliacaoLocalDAO();
 
-        if (req.getParameter("avaliar") != null) {
-            if (avaliacaoLocalDao.insert(new AvaliacaoLocal(idDoLocal, avaliador, notaLocal))) {
-                req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
-            } else {
-                res.sendRedirect("erro.jsp");
-            }
+        if (avaliacaoLocalDao.insert(new AvaliacaoLocal(idDoLocal, avaliador, notaLocal))) {
+            req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
         } else {
-            if (avaliacaoLocalDao.update(new AvaliacaoLocal(idDoLocal, avaliador, notaLocal))) {
-                req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
-            } else {
-                res.sendRedirect("erro.jsp");
-            }
+            res.sendRedirect("erro.jsp");
         }
 
     }

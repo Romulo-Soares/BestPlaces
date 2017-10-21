@@ -29,22 +29,6 @@ public class AvaliacaoLocalDAO implements IAvaliacaoLocal {
         return retorno;
 
     }
-    
-    public boolean update(AvaliacaoLocal a) throws SQLException, ClassNotFoundException {
-        
-        Connection con = ConFactory.getConnection();
-        PreparedStatement stmt = con.prepareStatement(
-                "UPDATE avaliacao_local SET (nota_local) = (?) "
-                        + "WHERE id_local = ?");
-
-        stmt.setInt(1, a.getNota());
-        stmt.setInt(2, a.getIdLocal());
-
-        boolean retorno = stmt.executeUpdate() > 0;
-        
-        con.close();
-        return retorno;
-    }
 
     public int countStar(int idLocal) throws SQLException, ClassNotFoundException {
 
@@ -56,18 +40,16 @@ public class AvaliacaoLocalDAO implements IAvaliacaoLocal {
 
         ResultSet rs = stmt.executeQuery();
 
+        double notaMedia = 0;
         int count = 0;
+        
+        while (rs.next()) {
+            count++;
+            notaMedia += rs.getInt("nota_local");
 
-        if (rs.next()) {
-            count = rs.getInt("nota_local");
-
-            con.close();
-            return count;
-
-        } else {
-            con.close();
-            return count;
         }
+        con.close();
+        return ((int)notaMedia/count)+1;
 
     }
 

@@ -143,25 +143,19 @@
                         <input type="hidden" name="identificador" value="AvaliacaoLocal"> 
                         <input type="hidden" name="email" value="${local.usuario}"> 
                         <input type="hidden" name="nome" value="${local.nome}"> 
-                        
-                        <c:choose>
-                            <c:when test="${valorAvaliacao != 0}">
-                                <button type="submit" class="btn-sm btn-danger" name="reavaliar" role="button">Reavaliar</button>
-                            </c:when>
-                            <c:otherwise>
-                                <button type="submit" class="btn-sm btn-danger" name="avaliar" role="button">Avaliar</button>
-                            </c:otherwise>
-                        </c:choose>
-                        
+
+
+                        <button type="submit" class="btn-sm btn-danger" name="avaliar" role="button">Avaliar</button>
+
                     </form>    
 
                     <script type="text/javascript">
                         function setaDadosStar(valorAvaliacao) {
                             var radio = document.getElementById("cm_star-" + valorAvaliacao);
                             radio.checked = "true";
-                        }                       
+                        }
                     </script>
-                    
+
                 </div>
             </div>
         </div>
