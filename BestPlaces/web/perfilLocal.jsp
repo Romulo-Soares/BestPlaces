@@ -11,8 +11,8 @@
         <ct:countStar idLocal="${local.id}"/>
     </head>
     <body onload="setaDadosStar('${valorAvaliacao}')">
-
-        <div class="container" id="divCad">
+        <%@ include file="menu.jsp"%>
+        <div class="container col-sm-6" id="divContMen">
             <div class="row" id="divContMenTit">
                 <div class="col-md-12 text-center">
                     <h1>Perfil Local</h1>
@@ -97,9 +97,16 @@
                                                     <input type="text" name="comentario" class="form-control" placeholder="Comentário" aria-describedby="basic-addon1" required>
                                                 </div>
                                             </div>
+
                                             <div class="input-group input-group"> 
                                                 <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
-                                                <input data-toggle="tooltip" name="foto" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                <input data-toggle="tooltip" name="foto" title="Escolha a foto da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                            </div><br>
+
+                                            <div class="form-group">
+                                                <div class="input-group input-group"> 
+                                                    <input type="button" name="fotosPresencaLocal" data-toggle="modal" data-target="#${local.id}-1" class="btn btn-danger btn-md btn-block" role="button" value="Add Fotos">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -109,16 +116,49 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="${local.id}-1" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Fotos Presença</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="FrontControl?fotoPresenca=${local.nome}&id=${local.id}" method="post" enctype="multipart/form-data">
+                                            <div class="input-group input-group"> 
+                                                <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
+                                                <input data-toggle="tooltip" name="fotoPresenca" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                            </div>
+
+                                            <div class="form-group" id="divBtLogin">
+                                                <input type="hidden" name="usuario" value="${local.usuario}"> 
+                                                <input type="hidden" name="identificador" value="AdicionaFotoPresencaLocal"> 
+                                                <input type="submit" name="adicionarFotoPerfilLocal" class="btn btn-danger btn-md" role="button" value="Adicionar">
+                                            </div>
+                                        </form>  
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
-                <div class="panel-body text-center pull-left">Nome: ${local.nome}</div>
-                <div class="panel-body text-center">Rua: ${local.rua}</div>
-                <div class="panel-body text-center pull-left">Cidade: ${local.cidade}</div>
-                <div class="panel-body text-center">Descricao: ${local.descricao}</div>
-                <div class="panel-body text-center pull-left">Estado: ${local.estado}</div>
-                <div class="panel-body text-center">Tipo: ${local.tipo}</div>
-                <div class="panel-body text-center">Deixe sua avaliação abaixo:</div>
+                <div class="list-group-item text-center">Nome: ${local.nome}</div>
+                <div class="list-group-item text-center">Rua: ${local.rua}</div>
+                <div class="list-group-item text-center">Cidade: ${local.cidade}</div>
+                <div class="list-group-item text-center">Descricao: ${local.descricao}</div>
+                <div class="list-group-item text-center">Estado: ${local.estado}</div>
+                <div class="list-group-item text-center">Tipo: ${local.tipo}</div>
+                <div class="list-group-item text-center">Deixe sua avaliação abaixo:</div>
                 <div class="estrelas panel-body text-center">
 
                     <form action="FrontControl" method="post">  

@@ -10,8 +10,8 @@
     </head>
     <body>
         <ct:findEventoProfile idEvento="${param.idEvento}"/>
-
-        <div class="container" id="divCad">
+        <%@ include file="menu.jsp"%>
+        <div class="container col-sm-6" id="divContMen">
             <div class="row" id="divContMenTit">
                 <div class="col-md-12 text-center">
                     <h1>Perfil Evento</h1>
@@ -38,7 +38,7 @@
                                         <input type="submit" name="divulgar" class="btn btn-danger btn-md btn-block" role="button" value="Divulgar">
                                     </c:when>
                                     <c:otherwise>
-                                        Evento Divulgado
+                                        <h5 class="text-success"><i class="glyphicon glyphicon-ok"></i> Evento Divulgado</h5>
                                         <input type="submit" name="desfazerDivulgacao" class="btn btn-danger btn-md btn-block" role="button" value="Desfazer Divulgacao">
                                     </c:otherwise>
                                 </c:choose>
@@ -60,7 +60,7 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Marcar Presença</h4>
                                     </div>
-                                    
+
                                     <form action="FrontControl" method="post" name="marcar presenca" enctype="multipart/form-data">
                                         <div class="modal-body">
 
@@ -82,9 +82,16 @@
                                                     <input type="text" name="comentario" class="form-control" placeholder="Comentário" aria-describedby="basic-addon1" required>
                                                 </div>
                                             </div>
+
                                             <div class="input-group input-group"> 
                                                 <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
-                                                <input data-toggle="tooltip" name="foto" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                <input data-toggle="tooltip" name="foto" title="Escolha a foto da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                            </div><br>
+
+                                            <div class="form-group">
+                                                <div class="input-group input-group"> 
+                                                    <input type="button" name="fotosPresencaEvento" data-toggle="modal" data-target="#${evento.id}-1" class="btn btn-danger btn-md btn-block" role="button" value="Add Fotos">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -99,14 +106,45 @@
                             </div>
                         </div>
 
+                        <div class="modal fade" id="${evento.id}-1" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Fotos Presença</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="FrontControl?fotoPresencaEvento=${evento.nome}&id=${evento.id}" method="post" enctype="multipart/form-data">
+                                            <div class="input-group input-group"> 
+                                                <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
+                                                <input data-toggle="tooltip" name="fotoPresencaEvento" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                            </div>
+
+                                            <div class="form-group" id="divBtLogin">
+                                                <input type="hidden" name="identificador" value="AdicionaFotoPresencaEvento"> 
+                                                <input type="submit" name="adicionarFotoPerfil" class="btn btn-danger btn-md" role="button" value="Adicionar">
+                                            </div>
+                                        </form>  
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> 
+
                     </div>
 
                 </div>
-                <div class="panel-body text-center pull-left">Nome: ${evento.nome}</div>
-                <div class="panel-body text-center">Data: ${evento.data}</div>
-                <div class="panel-body text-center pull-left">Hora: ${evento.hora}</div>
-                <div class="panel-body text-center">Local: ${evento.local}</div>
-                <div class="panel-body text-center">Descrição: ${evento.descricao}</div>
+                <div class="list-group-item text-center">Nome: ${evento.nome}</div>
+                <div class="list-group-item text-center">Data: ${evento.data}</div>
+                <div class="list-group-item text-center">Hora: ${evento.hora}</div>
+                <div class="list-group-item text-center">Local: ${evento.local}</div>
+                <div class="list-group-item text-center">Descrição: ${evento.descricao}</div>
 
             </div>
         </div>

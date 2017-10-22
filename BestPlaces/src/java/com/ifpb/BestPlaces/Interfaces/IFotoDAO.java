@@ -12,6 +12,9 @@ public interface IFotoDAO {
     public boolean insert(Foto f, String tabela)
             throws SQLException, ClassNotFoundException;
 
+    public boolean insertE(Foto f, String tabela)
+            throws SQLException, ClassNotFoundException;
+
     public boolean delete(int id, String tabela)
             throws SQLException, ClassNotFoundException;
 

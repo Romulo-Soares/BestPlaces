@@ -57,6 +57,24 @@ public class FotoDAO implements IFotoDAO {
     }
     
     @Override
+    public boolean insertE(Foto f, String tabela) throws SQLException, ClassNotFoundException {
+
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "INSERT INTO " + tabela + " (id_evento, foto)"
+                + "VALUES (?,?)");
+
+        stmt.setInt(1, f.getId());
+        stmt.setString(2, f.getFoto());
+
+        boolean retorno = stmt.executeUpdate() > 0;
+
+        con.close();
+        return retorno;
+
+    }
+    
+    @Override
     public boolean insertFotosPresencaEvento(Foto f, String tabela) 
             throws SQLException, ClassNotFoundException {
 

@@ -70,10 +70,10 @@
 
                 <c:choose>
                     <c:when test="${not empty dezMaisConversadores}">
-                        <div class="col-sm-2 sidenav pull-right" id="divDadosLo">
-                            Dez mais Conversadores
+                        <div class="col-sm-2 sidenav pull-right" id="divMenuLa">
+                            <h5 class="text-center">Dez Mais Conversadores</h5>
                             <c:forEach var="dezMais" items="${dezMaisConversadores}">  
-                                <div class="well">
+                                <div class="well-sm text-center" id="divWell">
                                     <a type="button" onclick="setaDadosModal('${dezMais.nome}', '${dezMais.email}')" data-toggle="modal" id="btPes" class="btn btn-md" data-target="#myModal" >${dezMais.nome}</a>
                                 </div> 
 

@@ -12,7 +12,8 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div id="divContPes">
+            <%@ include file="menu.jsp"%> 
+            <div class="col-sm-6" id="divContMen">
                 <div class="row" id="divContMenTit">
                     <div class=" col-md-12 text-center">
                         <h1>Recomendações</h1>
@@ -29,7 +30,7 @@
                                 O Local já está marcado para esta data
                             </c:if>
 
-                            <div id="divResultado">
+                            <div id="divResultadoRec">
                                 <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
                                 <div id="divPes" class="form-group pull-left">
                                     <h4>${recomendacoes.nome}</h4>
@@ -44,7 +45,7 @@
                                 <ct:countStar idLocal="${recomendacoes.id}"/>
 
 
-                                <div id="divPesbt" class="form-group pull-right" >
+                                <div id="divPesRec" class="form-group pull-right" >
                                     <div class="estrelas  text-center">
                                         <form action="FrontControl" method="post">  
                                             <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
@@ -71,12 +72,13 @@
                                     function setaDadosStar(valorAvaliacao) {
                                         var radio = document.getElementById("${recomendacoes.id}-" + valorAvaliacao);
                                         radio.checked = "true";
-                                    };
+                                    }
+                                    ;
                                 </script>
 
                                 <div id="divPesbt" class="form-group">
 
-                                    <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#${recomendacoes.id}" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
+                                    <input type="button" id="btPes" name="marcarPresenca" data-toggle="modal" data-target="#${recomendacoes.id}" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
 
                                     <div class="modal fade" id="${recomendacoes.id}" role="dialog">
                                         <div class="modal-dialog">
@@ -106,9 +108,16 @@
                                                                 <input type="text" name="comentario" class="form-control" placeholder="Comentário" aria-describedby="basic-addon1" required>
                                                             </div>
                                                         </div>
+
                                                         <div class="input-group input-group"> 
                                                             <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
-                                                            <input data-toggle="tooltip" name="foto" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                            <input data-toggle="tooltip" name="foto" title="Escolha a foto da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                        </div><br>
+
+                                                        <div class="form-group">
+                                                            <div class="input-group input-group"> 
+                                                                <input type="button" name="fotosPresencaLocal" data-toggle="modal" data-target="#${recomendacoes.id}-6" class="btn btn-danger btn-md btn-block" role="button" value="Add Fotos">
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -122,6 +131,38 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="modal fade" id="${recomendacoes.id}-6" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Fotos Presença</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <form action="FrontControl?fotoPresenca=${recomendacoes.nome}&id=${recomendacoes.id}" method="post" enctype="multipart/form-data">
+                                                    <div class="input-group input-group"> 
+                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
+                                                        <input data-toggle="tooltip" name="fotoPresenca" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                    </div>
+
+                                                    <div class="form-group" id="divBtLogin">
+                                                        <input type="hidden" name="identificador" value="AdicionaFotoPresencaLocal"> 
+                                                        <input type="submit" name="adicionarRec" class="btn btn-danger btn-md" role="button" value="Adicionar">
+                                                    </div>
+                                                </form>  
+
+                                            </div>
+                                            <div class="modal-footer">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div> 
                         </c:forEach>
                     </c:when>

@@ -12,7 +12,8 @@
     <body>
         <ct:findLocalByName nome="${param.nome}"/>
         <div class="container-fluid">
-            <div id="divContPes">
+             <%@ include file="menu.jsp"%> 
+            <div class="col-sm-6" id="divContMen">
                 <div class="row" id="divContMenTit">
                     <div class=" col-md-12 text-center">
                         <h1>Pesquise o local para seu Evento</h1>

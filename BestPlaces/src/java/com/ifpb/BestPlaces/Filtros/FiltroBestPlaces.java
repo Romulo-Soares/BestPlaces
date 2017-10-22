@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "filtroBestPlaces", urlPatterns = {"/inicial.jsp", "/editarPerfil.jsp"})
+@WebFilter(filterName = "filtroBestPlaces", 
+        urlPatterns = {"/inicial.jsp", "/editarPerfil.jsp", "/amigos.jsp", 
+            "/cadastroEvento.jsp", "/cadastroLocal.jsp", "/evento.jsp", 
+            "/local.jsp", "/mensagem.jsp", "/menu.jsp", 
+            "/menuEd.jsp", "/perfil.jsp", "/perfilEvento.jsp",
+            "/perfilLocal.jsp", "/pesquisarEvento.jsp", "/pesquisarLocal.jsp",
+            "/pesquisarLocalEvento.jsp", "/pesquisarUsuario.jsp", "/recomendacoes.jsp", "/solicitacao.jsp"})
 public class FiltroBestPlaces implements Filter {
 
     @Override

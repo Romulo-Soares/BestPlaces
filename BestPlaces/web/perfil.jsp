@@ -42,10 +42,10 @@
                         </div>
                     </form>
                 </div>
-                <div class="panel-body text-center">Nome: ${usuario.nome}</div>
-                <div class="panel-body text-center">Cidade: ${usuario.cidade}</div>
-                <div class="panel-body text-center">E-mail: ${usuario.email}</div>
-                <div class="panel-body text-center">Profissão: ${usuario.profissao}</div>
+                <div class="list-group-item text-center">Nome: ${usuario.nome}</div>
+                <div class="list-group-item text-center">Cidade: ${usuario.cidade}</div>
+                <div class="list-group-item text-center">E-mail: ${usuario.email}</div>
+                <div class="list-group-item text-center">Profissão: ${usuario.profissao}</div>
             </div>
         </div>
 

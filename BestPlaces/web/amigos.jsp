@@ -35,7 +35,7 @@
                                             <h5 id="hDados">Profissão: ${amigos.profissao}</h5> 
                                         </div>
 
-                                        <a type="button" onclick="setaDadosModal('${amigos.nome}', '${amigos.email}')" name="buttonModal" data-toggle="modal" id="btPes" class="btn btn-danger btn-md btn" data-target="#myModal" ><i class="glyphicon glyphicon-send"></i></a> 
+                                        <a type="button" onclick="setaDadosModal('${amigos.nome}', '${amigos.email}')" name="buttonModal" data-toggle="modal" id="btMens" class="btn btn-danger btn-md btn" data-target="#myModal" ><i class="glyphicon glyphicon-send"></i></a> 
 
                                         <script type="text/javascript">
                                             function setaDadosModal(nome, destinatario) {
