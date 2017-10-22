@@ -297,4 +297,23 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>eventoDivulgado</name>
+        <description>Verifica se o evento em destaque já foi divulgado pelo usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.VerificaEventoDivulgado</tag-class>
+        <attribute>
+            <name>idEvento</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>

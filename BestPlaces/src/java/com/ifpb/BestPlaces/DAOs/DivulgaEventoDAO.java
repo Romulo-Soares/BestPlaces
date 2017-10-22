@@ -2,6 +2,7 @@ package com.ifpb.BestPlaces.DAOs;
 
 import com.ifpb.BestPlaces.Conexao.ConFactory;
 import com.ifpb.BestPlaces.Entidades.Evento;
+import com.ifpb.BestPlaces.Interfaces.IDivulgaEventoDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DivulgaEventoDAO {
+public class DivulgaEventoDAO implements IDivulgaEventoDAO{
 
+    @Override
     public boolean insert(int idEvento, String usuario)
             throws SQLException, ClassNotFoundException {
 
@@ -29,6 +31,7 @@ public class DivulgaEventoDAO {
 
     }
 
+    @Override
     public boolean delete(int idEvento)
             throws SQLException, ClassNotFoundException {
 
@@ -45,6 +48,7 @@ public class DivulgaEventoDAO {
 
     }
 
+    @Override
     public List<Evento> eventosDivulgados(String usuario)
             throws SQLException, ClassNotFoundException {
 
@@ -88,5 +92,27 @@ public class DivulgaEventoDAO {
         con.close();
         return eventos;
     }
+    
+    @Override
+    public boolean eventoDivulgado(int idEvento, String usuario) 
+            throws ClassNotFoundException, SQLException{
 
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM divulgacao_evento WHERE id_evento = ? and usuario = ?");
+
+        stmt.setInt(1, idEvento);
+        stmt.setString(2, usuario);
+        
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) { 
+            con.close();
+            return true;
+        } else {
+            con.close();
+            return false;
+        }
+    }
+    
 }

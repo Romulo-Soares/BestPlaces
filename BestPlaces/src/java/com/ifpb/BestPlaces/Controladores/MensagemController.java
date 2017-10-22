@@ -35,6 +35,11 @@ public class MensagemController implements ICommand {
                 res.sendRedirect("mensagem.jsp");
             }
         }
+        if (req.getParameter("enviarMensagemI") != null) {
+            if (mDAO.insert(m)) {
+                res.sendRedirect("inicial.jsp");
+            }
+        }
     }
 
 }

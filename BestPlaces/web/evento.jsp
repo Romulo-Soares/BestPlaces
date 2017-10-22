@@ -113,6 +113,75 @@
                                                 <input type="submit" name="excluirEvento" class="btn btn-danger btn-md btn-block" value="Excluir">
                                             </form>
                                         </div>   
+
+                                        <form action="FrontControl" method="post" name="divulgarEvento">
+                                            <input type="hidden" name="identificador" value="DivulgaEvento">
+                                            <input type="hidden" name="idEvento" value="${eventos.id}">
+                                            <ct:eventoDivulgado idEvento="${eventos.id}" usuario="${sessionScope.email}"/>
+                                            <c:choose>
+                                                <c:when test="${divulgado == false}">
+                                                    <input type="submit" name="divulgarE" class="btn btn-danger btn-md btn-block" role="button" value="Divulgar">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    Evento Divulgado
+                                                    <input type="submit" name="desfazerDivulgacaoE" class="btn btn-danger btn-md btn-block" role="button" value="Desfazer Divulgacao">
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </form>
+
+
+                                        <c:if test="${not empty param.isMarked}">
+                                            O Evento já está marcado para esta data
+                                        </c:if>          
+
+                                        <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#${eventos.id}-1" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
+
+                                        <div class="modal fade" id="${eventos.id}-1" role="dialog">
+                                            <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Marcar Presença</h4>
+                                                    </div>
+
+                                                    <form action="FrontControl" method="post" name="marcar presenca" enctype="multipart/form-data">
+                                                        <div class="modal-body">
+
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                                    <input type="date" name="data" data-toggle="tooltip" title="Informe a data que irá comparecer" class="form-control" placeholder="Comparecimento" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-check"></i></span>
+                                                                    <input type="text" name="status" class="form-control" placeholder="Status" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-comment"></i></span>
+                                                                    <input type="text" name="comentario" class="form-control" placeholder="Comentário" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group input-group"> 
+                                                                <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
+                                                                <input data-toggle="tooltip" name="foto" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="hidden" name="identificador" value="PresencaEvento">
+                                                            <input type="hidden" name="idEvento" value="${eventos.id}">
+                                                            <input type="hidden" name="nome" value="${eventos.nome}">
+                                                            <button type="submit" name="mpE" class="btn btn-danger">Marcar Presença</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 

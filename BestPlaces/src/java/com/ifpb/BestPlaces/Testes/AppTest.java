@@ -4,7 +4,10 @@ import com.ifpb.BestPlaces.DAOs.AvaliacaoLocalDAO;
 import com.ifpb.BestPlaces.DAOs.DivulgaEventoDAO;
 import com.ifpb.BestPlaces.DAOs.InteracaoUsuarioDAO;
 import com.ifpb.BestPlaces.DAOs.MensagemDAO;
+import com.ifpb.BestPlaces.DAOs.PresencaEventoDAO;
 import com.ifpb.BestPlaces.DAOs.RecomendacaoLocalDAO;
+import com.ifpb.BestPlaces.Entidades.AvaliacaoLocal;
+import com.ifpb.BestPlaces.Entidades.PresencaEvento;
 import java.sql.SQLException;
 
 public class AppTest {
@@ -41,8 +44,16 @@ public class AppTest {
         
         
 //        AvaliacaoLocalDAO ald = new AvaliacaoLocalDAO();
-//        System.out.println((int)ald.countStar(17)+1);
+//        System.out.println(ald.localAvaliado(new AvaliacaoLocal(17, "romulof@gmail.com", 0)));
+    
+//        DivulgaEventoDAO ded = new DivulgaEventoDAO();
+//        System.out.println(ded.eventoDivulgado(7, "rossslo@gmail.com"));
 
+//        PresencaEventoDAO ped = new PresencaEventoDAO();
+//        System.out.println(ped.isMarked(new PresencaEvento(7, "romulso@gmail.com", "", "", "2017-10-25")));
+    
+    
+    
     }
 
 }

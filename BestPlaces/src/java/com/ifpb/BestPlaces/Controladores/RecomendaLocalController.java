@@ -25,22 +25,33 @@ public class RecomendaLocalController implements ICommand {
 
         RecomendacaoLocalDAO rlDAO = new RecomendacaoLocalDAO();
         RecomendacaoLocal rl = new RecomendacaoLocal(usuario_recomendador, usuario_destino, id_local);
-
+        
+        String back = "perfilLocal.jsp";
+        
         if (!rlDAO.isRecommended(rl)) {
             if (rlDAO.recomendaLocal(rl)) {
-                req.setAttribute("email", usuario_recomendador);
-                req.setAttribute("nome", nomeLocal);
-                req.getRequestDispatcher("perfilLocal.jsp").forward(req, res);
+               if(req.getParameter("recomendarPageLocal") != null){
+                   res.sendRedirect("local.jsp?email=" + usuario_recomendador
+                    + "&nome=" + nomeLocal);
+               }else{
+                   res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador
+                    + "&nome=" + nomeLocal);
+               } 
             } else {
-                req.setAttribute("email", usuario_recomendador);
-                req.setAttribute("nome", nomeLocal);
-                req.setAttribute("back", "perfilLocal.jsp");
-                req.setAttribute("msg", "O Usuario não é amigo do recomendado!");
-                req.getRequestDispatcher("erro.jsp").forward(req, res);
+                if(req.getParameter("recomendarPageLocal") != null) back = "local.jsp";
+                res.sendRedirect("erro.jsp?email=" + usuario_recomendador
+                    + "&nome=" + nomeLocal + "&back=" + "&msg=O "
+                            + "usuario nao eh amigo do recomendado");
             }
         } else {
-            res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador
+            if(req.getParameter("recomendarPageLocal") != null){
+                res.sendRedirect("local.jsp?email=" + usuario_recomendador
                     + "&nome=" + nomeLocal + "&isRecommended=true");
+            }else{
+                res.sendRedirect("perfilLocal.jsp?email=" + usuario_recomendador
+                    + "&nome=" + nomeLocal + "&isRecommended=true");
+            }
+            
         }
 
     }

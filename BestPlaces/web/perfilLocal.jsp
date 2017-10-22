@@ -29,12 +29,10 @@
                 <div class="panel-heading text-center">
 
                     <div id="divPerfil">
-
-
                         <div class="form-group">
 
                             <c:if test="${not empty param.isRecommended}">
-                                O Usuario já recomendado para este local
+                                O Usuario já está recomendado para este local
                             </c:if>
 
                             <input type="button" name="recomendar" data-toggle="modal" data-target="#modalRec" class="btn btn-danger btn-md btn-block" role="button" value="Recomendar">
@@ -73,7 +71,6 @@
 
                         <div class="modal fade" id="modalMarc" role="dialog">
                             <div class="modal-dialog">
-
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -82,7 +79,6 @@
                                     </div>
                                     <form action="FrontControl?identificador=PresencaLocal&id_local=${local.id}&nomeLocal=${param.nome}" method="post" name="marcar presenca" enctype="multipart/form-data">
                                         <div class="modal-body">
-
                                             <div class="form-group">
                                                 <div class="input-group input-group"> 
                                                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -111,10 +107,8 @@
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -144,9 +138,7 @@
                         <input type="hidden" name="email" value="${local.usuario}"> 
                         <input type="hidden" name="nome" value="${local.nome}"> 
 
-
                         <button type="submit" class="btn-sm btn-danger" name="avaliar" role="button">Avaliar</button>
-
                     </form>    
 
                     <script type="text/javascript">
@@ -159,6 +151,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

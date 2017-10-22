@@ -32,8 +32,9 @@
                             <form action="FrontControl" method="post" name="divulgarEvento">
                                 <input type="hidden" name="identificador" value="DivulgaEvento">
                                 <input type="hidden" name="idEvento" value="${evento.id}">
+                                <ct:eventoDivulgado idEvento="${evento.id}" usuario="${sessionScope.email}"/>
                                 <c:choose>
-                                    <c:when test="${empty param.divulgado || param.divulgado eq false}">
+                                    <c:when test="${divulgado == false}">
                                         <input type="submit" name="divulgar" class="btn btn-danger btn-md btn-block" role="button" value="Divulgar">
                                     </c:when>
                                     <c:otherwise>

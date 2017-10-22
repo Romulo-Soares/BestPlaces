@@ -23,12 +23,29 @@ public class AvaliacaoLocalController implements ICommand {
         String email = req.getParameter("email");
         String nome = req.getParameter("nome");
 
-        AvaliacaoLocalDAO avaliacaoLocalDao = new AvaliacaoLocalDAO();
+        AvaliacaoLocalDAO ald = new AvaliacaoLocalDAO();
+        AvaliacaoLocal a = new AvaliacaoLocal(idDoLocal, avaliador, notaLocal);
 
-        if (avaliacaoLocalDao.insert(new AvaliacaoLocal(idDoLocal, avaliador, notaLocal))) {
-            req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
+        if (ald.localAvaliado(a)) {
+            if (ald.update(a)) {
+                if (req.getParameter("avaliarRe") != null) {
+                    req.getRequestDispatcher("recomendacoes.jsp?email=" + email + "&nome=" + nome).forward(req, res);
+                } else {
+                    req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
+                }
+            } else {
+                res.sendRedirect("erro.jsp?msg=Nao atualizou");
+            }
         } else {
-            res.sendRedirect("erro.jsp");
+            if (ald.insert(a)) {
+                if (req.getParameter("avaliarRe") != null) {
+                    req.getRequestDispatcher("recomendacoes.jsp?email=" + email + "&nome=" + nome).forward(req, res);
+                } else {
+                    req.getRequestDispatcher("perfilLocal.jsp?email=" + email + "&nome=" + nome).forward(req, res);
+                }
+            } else {
+                res.sendRedirect("erro.jsp?msg=Nao inseriu");
+            }
         }
 
     }

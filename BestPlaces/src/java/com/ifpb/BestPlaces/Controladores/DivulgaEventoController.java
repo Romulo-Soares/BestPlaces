@@ -24,19 +24,28 @@ public class DivulgaEventoController implements ICommand {
 
         if (req.getParameter("divulgar") != null) {
             if (ged.insert(idEvento, usuario)) {
-                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento
-                        + "&divulgado=true");
+                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento);
             } else {
-                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento
-                        + "&divulgado=false");
+                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento);
             }
         } else if (req.getParameter("desfazerDivulgacao") != null) {
             if (ged.delete(idEvento)) {
-                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento
-                        + "&divulgado=false");
+                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento);
             } else {
-                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento
-                        + "&divulgado=true");
+                res.sendRedirect("perfilEvento.jsp?idEvento=" + idEvento);
+            }
+        }
+        if (req.getParameter("divulgarE") != null) {
+            if (ged.insert(idEvento, usuario)) {
+                res.sendRedirect("evento.jsp?idEvento=" + idEvento);
+            } else {
+                res.sendRedirect("evento.jsp?idEvento=" + idEvento);
+            }
+        } else if (req.getParameter("desfazerDivulgacaoE") != null) {
+            if (ged.delete(idEvento)) {
+                res.sendRedirect("evento.jsp?idEvento=" + idEvento);
+            } else {
+                res.sendRedirect("evento.jsp?idEvento=" + idEvento);
             }
         }
     }

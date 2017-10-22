@@ -20,7 +20,7 @@ public class PresencaLocalController implements ICommand, IFileManager {
             throws SQLException, ClassNotFoundException, IOException, ServletException {
 
         HttpSession session = req.getSession();
-        
+
         String usuario = (String) session.getAttribute("email");
         int id_local = Integer.parseInt(req.getParameter("id_local"));
         String comentario = req.getParameter("comentario");
@@ -28,9 +28,9 @@ public class PresencaLocalController implements ICommand, IFileManager {
         String data = req.getParameter("data");
 
         String nomeLocal = req.getParameter("nomeLocal");
-        
+
         FotoDAO ftDAO = new FotoDAO();
-        
+
         String foto = uploadFile("fotosPresencaLocal/" + nomeLocal, req,
                 req.getPart("foto"), nomeLocal + ftDAO.interatorFotos_Local("fotos_presenca_local"));
 
@@ -57,13 +57,24 @@ public class PresencaLocalController implements ICommand, IFileManager {
 
             if (!plDAO.isMarked(pl)) {
                 if (plDAO.presenciarLocal(pl) && fDAO.insert(f, "Fotos_Presenca_Local")) {
-                    res.sendRedirect("perfilLocal.jsp?email=" + usuario + "&nome=" + nomeLocal);
+                    if (req.getParameter("marcarPresencaPageLocal") != null) {
+                        res.sendRedirect("local.jsp?email=" + usuario + "&nome=" + nomeLocal);
+                    } else {
+                        res.sendRedirect("perfilLocal.jsp?email=" + usuario + "&nome=" + nomeLocal);
+                    }
+
                 } else {
                     res.sendRedirect("erro.jsp");
                 }
             } else {
-                res.sendRedirect("perfilLocal.jsp?email=" + usuario
-                        + "&nome=" + nomeLocal + "&isMarked=true");
+                if (req.getParameter("marcarPresencaPageLocal") != null) {
+                    res.sendRedirect("local.jsp?email=" + usuario
+                            + "&nome=" + nomeLocal + "&isMarked=true");
+                } else {
+                    res.sendRedirect("perfilLocal.jsp?email=" + usuario
+                            + "&nome=" + nomeLocal + "&isMarked=true");
+                }
+
             }
         }
 

@@ -102,7 +102,90 @@
                                                 <input type="hidden" name="identificador" value="ExcluiLocal">
                                                 <input type="submit" name="excluirLocal" class="btn btn-danger btn-md btn-block" value="Excluir">
                                             </form>
-                                        </div>   
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <c:if test="${not empty param.isRecommended}">
+                                                O Usuario já está recomendado para este local
+                                            </c:if>
+
+                                            <input type="button" name="recomendar" data-toggle="modal" data-target="#${locais.id}-1" class="btn btn-danger btn-md btn-block" role="button" value="Recomendar">
+
+                                            <div class="modal fade" id="${locais.id}-1" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <form action="FrontControl?identificador=RecomendaLocal&id_local=${locais.id}&nomeLocal=${param.nome}" method="post" name="recomendacaoLocal">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Recomendar</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <div class="input-group input-group"> 
+                                                                        <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                                                                        <input type="email" name="usuario_destino" class="form-control" placeholder="Email do amigo" aria-describedby="basic-addon1" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" name="recomendarPageLocal" class="btn btn-danger" >Recomendar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <c:if test="${not empty param.isMarked}">
+                                            O Local já está marcado para esta data
+                                        </c:if>  
+
+                                        <input type="button" name="marcarPresenca" data-toggle="modal" data-target="#${locais.id}-2" class="btn btn-danger btn-md btn-block" role="button" value="Marcar Presença">
+
+                                        <div class="modal fade" id="${locais.id}-2" role="dialog">
+                                            <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Marcar Presença</h4>
+                                                    </div>
+                                                    <form action="FrontControl?identificador=PresencaLocal&id_local=${locais.id}&nomeLocal=${param.nome}" method="post" name="marcar presenca" enctype="multipart/form-data">
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                                    <input type="date" name="data" data-toggle="tooltip" title="Informe a data que irá comparecer" class="form-control" placeholder="Comparecimento" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-check"></i></span>
+                                                                    <input type="text" name="status" class="form-control" placeholder="Status" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-comment"></i></span>
+                                                                    <input type="text" name="comentario" class="form-control" placeholder="Comentário" aria-describedby="basic-addon1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group input-group"> 
+                                                                <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-picture"></i></span>
+                                                                <input data-toggle="tooltip" name="foto" title="Escolha as fotos da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="marcarPresencaPageLocal" class="btn btn-danger">Marcar Presença</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 

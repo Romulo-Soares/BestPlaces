@@ -8,6 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Recomendações</title>
         <%@ include file="navbar.jsp"%>
+
     </head>
     <body>
         <div class="container-fluid">
@@ -27,6 +28,7 @@
                             <c:if test="${not empty param.isMarked}">
                                 O Local já está marcado para esta data
                             </c:if>
+
                             <div id="divResultado">
                                 <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
                                 <div id="divPes" class="form-group pull-left">
@@ -39,26 +41,38 @@
 
                                 </div>
 
-                                <div id="divPesbt" class="form-group pull-right">
+                                <ct:countStar idLocal="${recomendacoes.id}"/>
+
+
+                                <div id="divPesbt" class="form-group pull-right" >
                                     <div class="estrelas  text-center">
                                         <form action="FrontControl" method="post">  
                                             <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                                            <label for="cm_star-1"><i class="fa"></i></label>
-                                            <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                                            <label for="cm_star-2"><i class="fa"></i></label>
-                                            <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                                            <label for="cm_star-3"><i class="fa"></i></label>
-                                            <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                                            <label for="cm_star-4"><i class="fa"></i></label>
-                                            <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                                            <label for="cm_star-5"><i class="fa"></i></label>
-                                            <input type="radio" id="cm_star-5" name="fb" value="5"/>
+                                            <label for="${recomendacoes.id}-1"><i class="fa"></i></label>
+                                            <input type="radio" id="${recomendacoes.id}-1" name="fb" value="1"/>
+                                            <label for="${recomendacoes.id}-2"><i class="fa"></i></label>
+                                            <input type="radio" id="${recomendacoes.id}-2" name="fb" value="2"/>
+                                            <label for="${recomendacoes.id}-3"><i class="fa"></i></label>
+                                            <input type="radio" id="${recomendacoes.id}-3" name="fb" value="3"/>
+                                            <label for="${recomendacoes.id}-4"><i class="fa"></i></label>
+                                            <input type="radio" id="${recomendacoes.id}-4" name="fb" value="4"/>
+                                            <label for="${recomendacoes.id}-5"><i class="fa"></i></label>
+                                            <input type="radio" id="${recomendacoes.id}-5" name="fb" value="5"/>
                                             <input type="hidden" name="idDoLocal" value="${recomendacoes.id}"> 
                                             <input type="hidden" name="identificador" value="AvaliacaoLocal"> 
-                                            <input type="submit" class="btn-sm btn-danger" role="button" value="Avaliar">
+                                            <input type="submit" name="avaliarRe" class="btn-sm btn-danger" role="button" value="Avaliar">
                                         </form>    
                                     </div>
                                 </div>
+
+                                <script type="text/javascript">
+                                    setaDadosStar('${valorAvaliacao}');
+
+                                    function setaDadosStar(valorAvaliacao) {
+                                        var radio = document.getElementById("${recomendacoes.id}-" + valorAvaliacao);
+                                        radio.checked = "true";
+                                    };
+                                </script>
 
                                 <div id="divPesbt" class="form-group">
 
