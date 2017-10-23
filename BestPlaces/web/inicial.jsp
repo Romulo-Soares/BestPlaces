@@ -24,7 +24,7 @@
 
                             <ct:buscaUsuarioRecomendador idLocal="${recomendacoes.id}" usuarioDestino="${sessionScope.email}"/>
 
-                            <div class="text-left">
+                            <div class="text-center">
                                 <b>${usuarioRecomendador}</b><em> recomendou este local para você</em>
                             </div>
 
@@ -53,7 +53,7 @@
                         <c:forEach var="ed" items="${eventosDivulgados}" >
                             <ct:buscaUsuarioDivulgador idEvento="${ed.id}"/>
 
-                            <div class="text-left">
+                            <div class="text-center">
                                 <b>${usuarioDivulgador}</b><em> divulgou este evento</em>
                             </div>
 
@@ -76,7 +76,7 @@
                     <c:forEach var="lp" items="${locaisPresenciados}">
                         <ct:retornaFotoLocal idLocal="${lp.idLocal}"/>
 
-                        <div class="text-left">
+                        <div class="text-center">
                             <ct:findUserProfile email="${lp.usuarioPresenciador}"/>
                             <em><b>${usuario.nome}</b> marcou presenca neste local em ${lp.dataPresenca}</em><br>
                             com status: ${lp.statusPresenciador} e comentário: ${lp.comentarioPresenciador}
@@ -100,7 +100,7 @@
                     <c:forEach var="ep" items="${eventosPresenciados}">
                         <ct:retornaFotoLocal idLocal="${ep.evento.idLocal}"/>
                         
-                        <div class="text-left">
+                        <div class="text-center">
                             <ct:findUserProfile email="${ep.presencaEvento.usuario}"/>
                             <em><b>${usuario.nome}</b> marcou presenca neste evento em ${ep.presencaEvento.data}</em><br>
                             com status: ${ep.presencaEvento.status} e comentário: ${ep.presencaEvento.comentario}
@@ -131,7 +131,10 @@
                 </div>
 
                 <ct:dezMaisConversadores usuarioInteragido="${sessionScope.email}"/>
-                <h5 class="text-center">Dez Mais Conversadores</h5>
+                <div class="col-sm-2 sidenav pull-right" id="divMenuDez">
+                  <h5 class="text-center">Dez Mais Conversadores</h5>  
+                </div>
+                
                 <c:choose>
                     <c:when test="${not empty dezMaisConversadores}">
                         <div class="col-sm-2 sidenav pull-right" id="divMenuLa">
@@ -174,8 +177,8 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div class="col-sm-2 sidenav pull-right" id="divDadosLo">
-                            <div class="well">
+                        <div class="col-sm-2 sidenav pull-right" id="divMenuLa">
+                            <div class="well-sm text-center" id="divWell">
                                 <p>Nenhum amigo encontrado!</p>
                             </div>
                         </div>

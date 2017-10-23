@@ -55,6 +55,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
+                                                <input type="hidden" name="email" value="${local.usuario}"> 
                                                 <button type="submit" class="btn btn-danger" >Recomendar</button>
                                             </div>
                                         </div>
@@ -114,6 +115,7 @@
 
                                         </div>
                                         <div class="modal-footer">
+                                            <input type="hidden" name="email" value="${local.usuario}"> 
                                             <button type="submit" class="btn btn-danger">Marcar Presença</button>
                                         </div>
                                     </form>

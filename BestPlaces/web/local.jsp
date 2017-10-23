@@ -132,6 +132,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
+                                                                <input type="hidden" name="email" value="${locais.usuario}"> 
                                                                 <button type="submit" name="recomendarPageLocal" class="btn btn-danger" >Recomendar</button>
                                                             </div>
                                                         </div>
@@ -192,6 +193,7 @@
 
                                                             </div>
                                                             <div class="modal-footer">
+                                                                <input type="hidden" name="email" value="${locais.usuario}"> 
                                                                 <button type="submit" name="marcarPresencaPageLocal" class="btn btn-danger">Marcar Presença</button>
                                                             </div>
                                                         </form>

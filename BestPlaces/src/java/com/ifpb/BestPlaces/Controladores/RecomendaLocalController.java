@@ -18,7 +18,7 @@ public class RecomendaLocalController implements ICommand {
 
         HttpSession session = req.getSession();
 
-        String usuario_recomendador = (String) session.getAttribute("email");
+        String usuario_recomendador = req.getParameter("email");
         String usuario_destino = req.getParameter("usuario_destino");
         int id_local = Integer.parseInt(req.getParameter("id_local"));
         String nomeLocal = req.getParameter("nomeLocal");

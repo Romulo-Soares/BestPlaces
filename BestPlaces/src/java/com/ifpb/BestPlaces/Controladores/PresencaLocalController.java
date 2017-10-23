@@ -21,7 +21,7 @@ public class PresencaLocalController implements ICommand, IFileManager {
 
         HttpSession session = req.getSession();
 
-        String usuario = (String) session.getAttribute("email");
+        String usuario = req.getParameter("email");
         int id_local = Integer.parseInt(req.getParameter("id_local"));
         String comentario = req.getParameter("comentario");
         String status = req.getParameter("status");

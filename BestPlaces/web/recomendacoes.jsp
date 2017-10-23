@@ -126,6 +126,7 @@
                                                     </div>
 
                                                     <div class="modal-footer">
+                                                        <input type="hidden" name="email" value="${sessionScope.email}"> 
                                                         <button type="submit" class="btn btn-danger" name="btMarcaPresencaRecomendacoes">Marcar Presença</button>
                                                     </div>
                                                 </form>
