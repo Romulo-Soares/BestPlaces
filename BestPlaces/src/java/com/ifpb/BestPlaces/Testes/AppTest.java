@@ -5,6 +5,7 @@ import com.ifpb.BestPlaces.DAOs.DivulgaEventoDAO;
 import com.ifpb.BestPlaces.DAOs.InteracaoUsuarioDAO;
 import com.ifpb.BestPlaces.DAOs.MensagemDAO;
 import com.ifpb.BestPlaces.DAOs.PresencaEventoDAO;
+import com.ifpb.BestPlaces.DAOs.PresencaLocalDAO;
 import com.ifpb.BestPlaces.DAOs.RecomendacaoLocalDAO;
 import com.ifpb.BestPlaces.Entidades.AvaliacaoLocal;
 import com.ifpb.BestPlaces.Entidades.PresencaEvento;
@@ -49,11 +50,16 @@ public class AppTest {
 //        DivulgaEventoDAO ded = new DivulgaEventoDAO();
 //        System.out.println(ded.eventoDivulgado(7, "rossslo@gmail.com"));
 
+//        PresencaLocalDAO ped = new PresencaLocalDAO();
+//        System.out.println(ped.isMarked(7, "romulo@gmail.com"));
+    
+//        System.out.println(new RecomendacaoLocalDAO().getNomeUsuarioRecomendador(
+//                "romulo@gmail.com", 17));
+    
 //        PresencaEventoDAO ped = new PresencaEventoDAO();
-//        System.out.println(ped.isMarked(new PresencaEvento(7, "romulso@gmail.com", "", "", "2017-10-25")));
-    
-    
-    
+//        System.out.println(ped.listaEventosPresenciados("raissa@gmail.com"));
+
+
     }
 
 }

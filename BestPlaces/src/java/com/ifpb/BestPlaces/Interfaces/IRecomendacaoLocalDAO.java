@@ -16,4 +16,7 @@ public interface IRecomendacaoLocalDAO {
     public List<Local> listaLocaisRecomendados(String usuario)
             throws SQLException, ClassNotFoundException;
 
+    public String getNomeUsuarioRecomendador(String usuarioDestino, int idLocal)
+            throws SQLException, ClassNotFoundException;
+
 }

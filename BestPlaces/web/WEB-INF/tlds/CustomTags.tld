@@ -316,4 +316,100 @@
         </attribute>
     </tag>
     
+    <tag>
+        <name>verificaPresencaLocal</name>
+        <description>Verifica se o local em destaque já foi presenciado pelo usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.VerificaPresencaLocal</tag-class>
+        <attribute>
+            <name>idLocal</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>verificaPresencaEvento</name>
+        <description>Verifica se o evento em destaque já foi presenciado pelo usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.VerificaPresencaEvento</tag-class>
+        <attribute>
+            <name>idEvento</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>buscaUsuarioRecomendador</name>
+        <description>Busca o usuario recomendador de um local</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.BuscaUsuarioRecomendador</tag-class>
+        <attribute>
+            <name>usuarioDestino</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>idLocal</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>buscaUsuarioDivulgador</name>
+        <description>Busca o usuario divulgador de um evento</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.BuscaUsuarioDivulgador</tag-class>
+        <attribute>
+            <name>idEvento</name>
+            <type>int</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>listaLocaisPresenciados</name>
+        <description>Lista os locais presenciados pelos amigos de um determindo usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaLocaisPresenciados</tag-class>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>listaEventosPresenciados</name>
+        <description>Lista os eventos presenciados pelos amigos de um determindo usuario</description>
+        <body-content>empty</body-content>
+        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventosPresenciados</tag-class>
+        <attribute>
+            <name>usuario</name>
+            <type>String</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 </taglib>

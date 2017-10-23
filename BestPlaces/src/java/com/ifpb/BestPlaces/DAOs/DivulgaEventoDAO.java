@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DivulgaEventoDAO implements IDivulgaEventoDAO{
+public class DivulgaEventoDAO implements IDivulgaEventoDAO {
 
     @Override
     public boolean insert(int idEvento, String usuario)
@@ -92,10 +92,10 @@ public class DivulgaEventoDAO implements IDivulgaEventoDAO{
         con.close();
         return eventos;
     }
-    
+
     @Override
-    public boolean eventoDivulgado(int idEvento, String usuario) 
-            throws ClassNotFoundException, SQLException{
+    public boolean eventoDivulgado(int idEvento, String usuario)
+            throws ClassNotFoundException, SQLException {
 
         Connection con = ConFactory.getConnection();
         PreparedStatement stmt = con.prepareStatement(
@@ -103,10 +103,10 @@ public class DivulgaEventoDAO implements IDivulgaEventoDAO{
 
         stmt.setInt(1, idEvento);
         stmt.setString(2, usuario);
-        
+
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) { 
+        if (rs.next()) {
             con.close();
             return true;
         } else {
@@ -114,5 +114,37 @@ public class DivulgaEventoDAO implements IDivulgaEventoDAO{
             return false;
         }
     }
-    
+
+    @Override
+    public String getNomeUsuarioDivulgador(int idEvento)
+            throws SQLException, ClassNotFoundException {
+
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "select nome "
+                + "from usuario "
+                + "where email IN "
+                + "(select usuario "
+                + "from divulgacao_evento "
+                + "where id_evento = ?)");
+
+        stmt.setInt(1, idEvento);
+
+        ResultSet rs = stmt.executeQuery();
+
+        String nome;
+
+        if (rs.next()) {
+            nome = rs.getString("nome");
+
+            con.close();
+            return nome;
+
+        } else {
+            con.close();
+            return null;
+        }
+
+    }
+
 }

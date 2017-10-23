@@ -18,4 +18,7 @@ public interface IDivulgaEventoDAO {
     public boolean eventoDivulgado(int idEvento, String usuario)
             throws ClassNotFoundException, SQLException;
 
+    public String getNomeUsuarioDivulgador(int idEvento)
+            throws SQLException, ClassNotFoundException;
+
 }

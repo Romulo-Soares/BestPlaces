@@ -21,13 +21,21 @@
 
                     <c:if test="${not empty recomendacoes}">
                         <c:forEach var="recomendacoes" items="${recomendacoes}" >
+
+                            <ct:buscaUsuarioRecomendador idLocal="${recomendacoes.id}" usuarioDestino="${sessionScope.email}"/>
+
+                            <div class="text-left">
+                                <b>${usuarioRecomendador}</b><em> recomendou este local para você</em>
+                            </div>
+
                             <ct:retornaFotoLocal idLocal="${recomendacoes.id}"/>
 
                             <div class="" id="divResultadoFeed">
                                 <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+
                                 <div id="divPes" class="form-group pull-left">
                                     <h4>${recomendacoes.nome}</h4>
-                                   
+
                                     <h6 id="hDados">Rua: ${recomendacoes.rua}</h6>
                                     <h6 id="hDados">Cidade: ${recomendacoes.cidade}</h6>
                                     <h6 id="hDados">Descricao: ${recomendacoes.descricao}</h6>
@@ -43,6 +51,12 @@
 
                     <c:if test="${not empty eventosDivulgados}">
                         <c:forEach var="ed" items="${eventosDivulgados}" >
+                            <ct:buscaUsuarioDivulgador idEvento="${ed.id}"/>
+
+                            <div class="text-left">
+                                <b>${usuarioDivulgador}</b><em> divulgou este evento</em>
+                            </div>
+
                             <ct:retornaFotoLocal idLocal="${ed.idLocal}"/>
                             <div class="" id="divResultadoFeed">
                                 <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
@@ -58,20 +72,69 @@
                         </c:forEach>
                     </c:if>
 
-                    <c:if test="${eventosDivulgados eq null and recomendacoes eq null}">
+                    <ct:listaLocaisPresenciados usuario="${sessionScope.email}"/>
+                    <c:forEach var="lp" items="${locaisPresenciados}">
+                        <ct:retornaFotoLocal idLocal="${lp.idLocal}"/>
+
+                        <div class="text-left">
+                            <ct:findUserProfile email="${lp.usuarioPresenciador}"/>
+                            <em><b>${usuario.nome}</b> marcou presenca neste local em ${lp.dataPresenca}</em><br>
+                            com status: ${lp.statusPresenciador} e comentário: ${lp.comentarioPresenciador}
+                        </div>
+
+                        <div class="" id="divResultadoFeed">
+                            <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+
+                            <div id="divPes" class="form-group pull-left">
+                                <h4>${lp.nomeLocal}</h4>
+                                <h6 id="hDados">Rua: ${lp.ruaLocal}</h6>
+                                <h6 id="hDados">Cidade: ${lp.cidadeLocal}</h6>
+                                <h6 id="hDados">Descricao: ${lp.descricaoLocal}</h6>
+                                <h6 id="hDados">Estado: ${lp.estadoLocal}</h6>
+                                <h6 id="hDados">Tipo: ${lp.tipoLocal}</h6>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+                    <ct:listaEventosPresenciados usuario="${sessionScope.email}"/>
+                    <c:forEach var="ep" items="${eventosPresenciados}">
+                        <ct:retornaFotoLocal idLocal="${ep.evento.idLocal}"/>
+                        
+                        <div class="text-left">
+                            <ct:findUserProfile email="${ep.presencaEvento.usuario}"/>
+                            <em><b>${usuario.nome}</b> marcou presenca neste evento em ${ep.presencaEvento.data}</em><br>
+                            com status: ${ep.presencaEvento.status} e comentário: ${ep.presencaEvento.comentario}
+                        </div>
+                        
+                        <div class="" id="divResultadoFeed">
+                            <img id="fotoPesquisa" src="${fotoLocal.foto}" alt="FotoPerfilLocal" class="img-circle pull-left">
+                            <div id="divPes" class="form-group pull-left">
+                                <h4>${ep.evento.nome}</h4>
+                                <h6 id="hDados">Criado por: ${ep.evento.usuario}</h6>
+                                <h6 id="hDados">Cidade: ${ep.evento.data}</h6>
+                                <h6 id="hDados">Descricao: ${ep.evento.hora}</h6>
+                                <h6 id="hDados">Estado: ${ep.evento.local}</h6>
+                                <h6 id="hDados">Tipo: ${ep.evento.descricao}</h6>
+                            </div>
+                        </div>
+
+                    </c:forEach>
+
+
+                    <c:if test="${empty eventosDivulgados and empty recomendacoes 
+                                  and empty eventosPresenciados and empty locaisPresenciados}">
                         <div class="col-md-12 text-center" id="divResultado">
-                            <h4>Suas recomendações e divulgações aparecerão Aqui</h4>
+                            <h5>Suas recomendações, divulgações e marcações em eventos e locais de amigos aparecerão Aqui</h5>
                         </div>
                     </c:if>
 
                 </div>
 
                 <ct:dezMaisConversadores usuarioInteragido="${sessionScope.email}"/>
-
+                <h5 class="text-center">Dez Mais Conversadores</h5>
                 <c:choose>
                     <c:when test="${not empty dezMaisConversadores}">
                         <div class="col-sm-2 sidenav pull-right" id="divMenuLa">
-                            <h5 class="text-center">Dez Mais Conversadores</h5>
                             <c:forEach var="dezMais" items="${dezMaisConversadores}">  
                                 <div class="well-sm text-center" id="divWell">
                                     <a type="button" onclick="setaDadosModal('${dezMais.nome}', '${dezMais.email}')" data-toggle="modal" id="btPes" class="btn btn-md" data-target="#myModal" >${dezMais.nome}</a>
@@ -84,7 +147,7 @@
                                         document.getElementById('email').value = '<' + destinatario + '>';
                                     }
                                 </script>
-                                
+
                                 <!--Modal Send Message-->
                                 <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog modal-md">

@@ -114,11 +114,15 @@
                                                             <input data-toggle="tooltip" name="foto" title="Escolha a foto da presença" type="file" class="form-control" aria-describedby="basic-addon1" required>
                                                         </div><br>
 
-                                                        <div class="form-group">
-                                                            <div class="input-group input-group"> 
-                                                                <input type="button" name="fotosPresencaLocal" data-toggle="modal" data-target="#${recomendacoes.id}-6" class="btn btn-danger btn-md btn-block" role="button" value="Add Fotos">
+                                                        <ct:verificaPresencaLocal idLocal="${recomendacoes.id}" usuario="${sessionScope.email}"/>
+                                                        <c:if test="${presenciado == true}" >
+                                                            <div class="form-group">
+                                                                <div class="input-group input-group"> 
+                                                                    <input type="button" name="fotosPresencaLocal" data-toggle="modal" data-target="#${recomendacoes.id}-6" class="btn btn-danger btn-md btn-block" role="button" value="Add Fotos">
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </c:if>
+
                                                     </div>
 
                                                     <div class="modal-footer">

@@ -95,4 +95,37 @@ public class RecomendacaoLocalDAO implements IRecomendacaoLocalDAO {
         return locais;
     }
 
+    @Override
+    public String getNomeUsuarioRecomendador(String usuarioDestino, int idLocal)
+            throws SQLException, ClassNotFoundException {
+
+        Connection con = ConFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement(
+                "select nome "
+                + "from usuario "
+                + "where email IN "
+                + "(select usuario_recomendador "
+                + "from recomendacao_local "
+                + "where usuario_destino = ? and id_local = ?)");
+
+        stmt.setString(1, usuarioDestino);
+        stmt.setInt(2, idLocal);
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        String nome;
+        
+        if (rs.next()) {
+            nome = rs.getString("nome");
+
+            con.close();
+            return nome;
+
+        } else {
+            con.close();
+            return null;
+        }
+
+    }
+
 }
