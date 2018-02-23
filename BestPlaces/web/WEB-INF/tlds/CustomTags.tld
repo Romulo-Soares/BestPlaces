@@ -1,415 +1,390 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" 
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee              
-            http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
-    
-    <tlib-version>1.0</tlib-version>
-    <short-name>ct</short-name>
-    <uri>/WEB-INF/tlds/CustomTags</uri>
-    <tag>
-        <name>findUserByName</name>
-        <description>Busca todos usuários por nome</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindUserByName</tag-class>
-        <attribute>
-            <name>nome</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>emailExcecao</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>findUserProfile</name>
-        <description>Busca os dados de perfil do usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindUserProfile</tag-class>
-        <attribute>
-            <name>email</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>solicitado</name>
-        <description>Verifica se a solicitação de amizade foi feita</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.VerificaSolicitacao</tag-class>
-        <attribute>
-            <name>usuarioInteraginte</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>usuarioInteragido</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>contaSolicitacoes</name>
-        <description>Conta as solicitações de amizade recebidas pelo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ContaSolicitacoes</tag-class>
-        <attribute>
-            <name>usuarioInteragido</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>buscaSolicitacoes</name>
-        <description>Busca as solicitações de amizade recebidas pelo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.BuscaSolicitacoes</tag-class>
-        <attribute>
-            <name>usuarioInteragido</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>listaAmigos</name>
-        <description>Lista amigos do usuario interagido</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaAmigos</tag-class>
-        <attribute>
-            <name>usuarioInteragido</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>dezMaisConversadores</name>
-        <description>Lista os dez amigos que mais conversam com o usuario interagido</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.DezMaisConversadores</tag-class>
-        <attribute>
-            <name>usuarioInteragido</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>countUserMensseger</name>
-        <description>Conta os usuarios com mensagens para o destinatario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.CountUserMensseger</tag-class>
-        <attribute>
-            <name>destinatario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findUserMensseger</name>
-        <description>Busca os usuarios com mensagens para o destinatario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindUserMensseger</tag-class>
-        <attribute>
-            <name>destinatario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findMessages</name>
-        <description>Busca todas as mensagens conversadas entre os usuarios</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindMessages</tag-class>
-        <attribute>
-            <name>remetente</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>destinatario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaLocais</name>
-        <description>Lista locais do usuario logado</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaLocais</tag-class>
-        <attribute>
-            <name>usuarioLogado</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaFotosLocal</name>
-        <description>Lista fotos do local</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaFotosLocal</tag-class>
-        <attribute>
-            <name>idFoto</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findLocalByName</name>
-        <description>Busca todos os locais por nome</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindLocalByName</tag-class>
-        <attribute>
-            <name>nome</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findLocalProfile</name>
-        <description>Busca os dados de perfil do local</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindLocalProfile</tag-class>
-        <attribute>
-            <name>email</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>nome</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>retornaFotoLocal</name>
-        <description>Retorna a foto do local</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.RetornaFotoLocal</tag-class>
-        <attribute>
-            <name>idLocal</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaRecomendacoes</name>
-        <description>Retorna as recomendacoes de um usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaRecomendacoes</tag-class>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaEventos</name>
-        <description>Lista eventos do usuario logado</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventos</tag-class>
-        <attribute>
-            <name>usuarioLogado</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findEventoByName</name>
-        <description>Busca todos os eventos por nome</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindEventoByName</tag-class>
-        <attribute>
-            <name>nome</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>findEventoProfile</name>
-        <description>Busca os dados de perfil do evento</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.FindEventoProfile</tag-class>
-        <attribute>
-            <name>idEvento</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaEventosDivulgados</name>
-        <description>Lista eventos divulgados de amigos</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventosDivulgados</tag-class>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>countStar</name>
-        <description>Conta as estrelas de um evento</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.CountStar</tag-class>
-        <attribute>
-            <name>idLocal</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>eventoDivulgado</name>
-        <description>Verifica se o evento em destaque já foi divulgado pelo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.VerificaEventoDivulgado</tag-class>
-        <attribute>
-            <name>idEvento</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>verificaPresencaLocal</name>
-        <description>Verifica se o local em destaque já foi presenciado pelo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.VerificaPresencaLocal</tag-class>
-        <attribute>
-            <name>idLocal</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>verificaPresencaEvento</name>
-        <description>Verifica se o evento em destaque já foi presenciado pelo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.VerificaPresencaEvento</tag-class>
-        <attribute>
-            <name>idEvento</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>buscaUsuarioRecomendador</name>
-        <description>Busca o usuario recomendador de um local</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.BuscaUsuarioRecomendador</tag-class>
-        <attribute>
-            <name>usuarioDestino</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>idLocal</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>buscaUsuarioDivulgador</name>
-        <description>Busca o usuario divulgador de um evento</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.BuscaUsuarioDivulgador</tag-class>
-        <attribute>
-            <name>idEvento</name>
-            <type>int</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaLocaisPresenciados</name>
-        <description>Lista os locais presenciados pelos amigos de um determindo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaLocaisPresenciados</tag-class>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
-    <tag>
-        <name>listaEventosPresenciados</name>
-        <description>Lista os eventos presenciados pelos amigos de um determindo usuario</description>
-        <body-content>empty</body-content>
-        <tag-class>com.ifpb.BestPlaces.Tags.ListaEventosPresenciados</tag-class>
-        <attribute>
-            <name>usuario</name>
-            <type>String</type>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                           http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+  <tlib-version>1.0</tlib-version>
+  <short-name>ct</short-name>
+  <uri>/WEB-INF/tlds/CustomTags</uri>
+  <tag>
+    <name>findUserByName</name>
+    <description>Busca todos usuários por nome</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindUserByName</tag-class>
+    <attribute>
+      <name>nome</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>emailExcecao</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findUserProfile</name>
+    <description>Busca os dados de perfil do usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindUserProfile</tag-class>
+    <attribute>
+      <name>email</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>solicitado</name>
+    <description>Verifica se a solicitação de amizade foi feita</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.VerificaSolicitacao</tag-class>
+    <attribute>
+      <name>usuarioInteraginte</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>usuarioInteragido</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>contaSolicitacoes</name>
+    <description>Conta as solicitações de amizade recebidas pelo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ContaSolicitacoes</tag-class>
+    <attribute>
+      <name>usuarioInteragido</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>buscaSolicitacoes</name>
+    <description>Busca as solicitações de amizade recebidas pelo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.BuscaSolicitacoes</tag-class>
+    <attribute>
+      <name>usuarioInteragido</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaAmigos</name>
+    <description>Lista amigos do usuario interagido</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaAmigos</tag-class>
+    <attribute>
+      <name>usuarioInteragido</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>dezMaisConversadores</name>
+    <description>Lista os dez amigos que mais conversam com o usuario interagido</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.DezMaisConversadores</tag-class>
+    <attribute>
+      <name>usuarioInteragido</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>countUserMensseger</name>
+    <description>Conta os usuarios com mensagens para o destinatario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.CountUserMensseger</tag-class>
+    <attribute>
+      <name>destinatario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findUserMensseger</name>
+    <description>Busca os usuarios com mensagens para o destinatario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindUserMensseger</tag-class>
+    <attribute>
+      <name>destinatario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findMessages</name>
+    <description>Busca todas as mensagens conversadas entre os usuarios</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindMessages</tag-class>
+    <attribute>
+      <name>remetente</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>destinatario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaLocais</name>
+    <description>Lista locais do usuario logado</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaLocais</tag-class>
+    <attribute>
+      <name>usuarioLogado</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaFotosLocal</name>
+    <description>Lista fotos do local</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaFotosLocal</tag-class>
+    <attribute>
+      <name>idFoto</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findLocalByName</name>
+    <description>Busca todos os locais por nome</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindLocalByName</tag-class>
+    <attribute>
+      <name>nome</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findLocalProfile</name>
+    <description>Busca os dados de perfil do local</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindLocalProfile</tag-class>
+    <attribute>
+      <name>email</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>nome</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>retornaFotoLocal</name>
+    <description>Retorna a foto do local</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.RetornaFotoLocal</tag-class>
+    <attribute>
+      <name>idLocal</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaRecomendacoes</name>
+    <description>Retorna as recomendacoes de um usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaRecomendacoes</tag-class>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaEventos</name>
+    <description>Lista eventos do usuario logado</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaEventos</tag-class>
+    <attribute>
+      <name>usuarioLogado</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findEventoByName</name>
+    <description>Busca todos os eventos por nome</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindEventoByName</tag-class>
+    <attribute>
+      <name>nome</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>findEventoProfile</name>
+    <description>Busca os dados de perfil do evento</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.FindEventoProfile</tag-class>
+    <attribute>
+      <name>idEvento</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaEventosDivulgados</name>
+    <description>Lista eventos divulgados de amigos</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaEventosDivulgados</tag-class>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>countStar</name>
+    <description>Conta as estrelas de um evento</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.CountStar</tag-class>
+    <attribute>
+      <name>idLocal</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>eventoDivulgado</name>
+    <description>Verifica se o evento em destaque já foi divulgado pelo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.VerificaEventoDivulgado</tag-class>
+    <attribute>
+      <name>idEvento</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>verificaPresencaLocal</name>
+    <description>Verifica se o local em destaque já foi presenciado pelo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.VerificaPresencaLocal</tag-class>
+    <attribute>
+      <name>idLocal</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>verificaPresencaEvento</name>
+    <description>Verifica se o evento em destaque já foi presenciado pelo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.VerificaPresencaEvento</tag-class>
+    <attribute>
+      <name>idEvento</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>buscaUsuarioRecomendador</name>
+    <description>Busca o usuario recomendador de um local</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.BuscaUsuarioRecomendador</tag-class>
+    <attribute>
+      <name>usuarioDestino</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>idLocal</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>buscaUsuarioDivulgador</name>
+    <description>Busca o usuario divulgador de um evento</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.BuscaUsuarioDivulgador</tag-class>
+    <attribute>
+      <name>idEvento</name>
+      <type>int</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaLocaisPresenciados</name>
+    <description>Lista os locais presenciados pelos amigos de um determindo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaLocaisPresenciados</tag-class>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>listaEventosPresenciados</name>
+    <description>Lista os eventos presenciados pelos amigos de um determindo usuario</description>
+    <body-content>empty</body-content>
+    <tag-class>com.ifpb.bestplaces.tags.ListaEventosPresenciados</tag-class>
+    <attribute>
+      <name>usuario</name>
+      <type>String</type>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
 </taglib>
